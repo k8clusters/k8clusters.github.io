@@ -7,8 +7,7 @@ import { QaComponent } from './qa/qa.component';
 @NgModule({
   declarations: [QaComponent],
   imports: [
-    CommonModule,
-    QaComponent
+    CommonModule
   ]
 })
 export class LmsModule { }
