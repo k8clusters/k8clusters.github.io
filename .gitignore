@@ -30,7 +30,6 @@ speed-measure-plugin*.json
 !.vscode/launch.json
 !.vscode/extensions.json
 .history/*
-
 # misc
 /.sass-cache
 /connect.lock
@@ -40,6 +39,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+/dist
 
 # System Files
 .DS_Store

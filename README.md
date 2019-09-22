@@ -11,6 +11,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 ```
     ng build --prod --base-href "https://k8clusters.github.io/"
     ng build --prod --base-href "https://k8clusters.github.io/k8clusters/"
+    ngh --dir dist/k8clusters
 ```
 
 ## Code scaffolding
