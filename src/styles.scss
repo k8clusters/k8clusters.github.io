@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,700');
+
+html,
+body {
+    height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    background: #2e9ce6;
+    font-family: 'Raleway','Arial';
+    color: #fff;
+    margin: 0;
+}
+
+.mat-toolbar {
+    display: inline;
+    text-transform: uppercase;
+    margin: 2px 2px 2px 2px;
+    padding: 5px 20px 5px 20px;
+    font-weight: bolder;
+    color: black;
+    border-radius: 4px;
+}
+
+.rainbow-text {
+    font-size: 25px;
+    background-image: linear-gradient(to left, violet, yellow, orange, red);
+    background-clip: content-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.mat-list-item {
+    display: inline;
+    margin: 2px 2px 2px 2px;
+    padding: 5px 20px 5px 20px;
+    font-weight: bolder;
+    border-radius: 4px;
+}
+
+.mat-list-item:hover {
+    background: #1179be;
+    cursor: pointer;
+}
+
+.mat-list-item a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.root-container {
+    display: inherit;
+    grid-template-columns: 100% auto;
+    padding: 10px 10px 10px 10px;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 50% auto;
+}
+
+.img-container {
+    width:100%;
+    padding: 5px 5px 5px 5px;
+    margin: 3px 3px 3px 3px;
+    border: 1px solid black;
+}
+
+.img-container img {
+    width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+.color-dark {
+    background: #2885c4;
+    font-weight: bold;
+    color:  #0f202c;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+.color-light {
+    background: #57B3f1;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.col {
+    border: 2px solid #150072;
+    padding: .4em 1.3em;
+}
+
+.life-container {
+    background: #3fa0e1;
+    padding: .5em;
+    font-weight: bold;
+    cursor: pointer;
+}
