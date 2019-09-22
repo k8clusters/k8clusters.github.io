@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Qa } from 'src/app/shared/models/lms/test/qa/qa.model';
+import { QuestionType } from 'src/app/shared/enums/lms/questionType';
 
 @Component({
   selector: 'app-qa',
@@ -12,4 +14,10 @@ export class QaComponent implements OnInit {
   ngOnInit() {
   }
 
+  qaType = QuestionType;
+  qa: Qa = { "id": "1", "question": "Whoami?", "options": ["Amit", "Poonam", "Amogh", "Not Sure"], "correctAnswer": "Not Sure", "type": QuestionType.multType }
+  
+  public isMultType(iType: QuestionType) {
+    return iType == QuestionType.multType;
+  }
 }

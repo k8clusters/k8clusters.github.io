@@ -1,1 +1,15 @@
-<p>qa works!</p>
+<p>{{qa.question}}</p>
+
+<div [ngSwitch]="qa.type">
+    <div *ngSwitchCase="qaType.textType">
+        <input type="text" />
+    </div>
+    <div *ngSwitchCase="qaType.boolType">
+        <input type="radio">
+    </div>
+    <div *ngSwitchCase="qaType.multType">
+        <div *ngFor="let choice of qa.options">
+            <label>{{choice}}</label> 
+        </div>
+    </div>
+</div>
