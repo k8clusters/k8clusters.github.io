@@ -1,15 +1,24 @@
-<p>{{qa.question}}</p>
-
-<div [ngSwitch]="qa.type">
-    <div *ngSwitchCase="qaType.textType">
-        <input type="text" />
-    </div>
-    <div *ngSwitchCase="qaType.boolType">
-        <input type="radio">
-    </div>
-    <div *ngSwitchCase="qaType.multType">
-        <div *ngFor="let choice of qa.options">
-            <label>{{choice}}</label> 
+<form>
+    <p>{{qa.question}}</p>
+    <div [ngSwitch]="qa.type">
+        <div *ngSwitchCase="qaType.textType">
+            <input type="text" />
+        </div>
+        <div *ngSwitchCase="qaType.boolType">
+            <input type="radio">
+        </div>
+        <div *ngSwitchCase="qaType.multAType">
+            <mat-radio-group>
+                <div *ngFor="let choice of qa.options">
+                    <mat-radio-button value="{{choice}}"><label>{{choice}}</label></mat-radio-button>
+                </div>
+            </mat-radio-group>
+        </div>
+        <div *ngSwitchCase="qaType.multMType">
+            <div *ngFor="let choice of qa.options">
+                <mat-checkbox color="primary" [checked]="true" formControlName="flagRimb"><label>{{choice}}</label>
+                </mat-checkbox>
+            </div>
         </div>
     </div>
-</div>
+</form>

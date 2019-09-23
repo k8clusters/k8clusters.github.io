@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport="false"
+  <mat-sidenav #drawer class="sidenav" style="overflow: hidden !important" fixedInViewport="false"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
@@ -8,14 +8,14 @@
       <a mat-list-item href="#" routerLink="">Home</a>
       <a mat-list-item href="#" routerLink="about">About</a>
       <mat-divider></mat-divider>
-      <h3 mat-subheader>Division</h3>
+      <a mat-list-item>Division</a>
       <mat-list-item *ngFor="let division of divisions">
           <a mat-list-item href="#" routerLink="qa">{{division.grade}}</a>
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class='color-light'>
-    <mat-toolbar color="primary" class="color-dark">
+    <mat-toolbar color="primary" class="nav-color-dark">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -24,7 +24,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon"><img src="assets/images/nav/nav-24px.svg" alt="Menu"/></mat-icon>
       </button>
-      <div class='root-container'>
+      <div class='header-root-container'>
         K8Clusters Learning Management System
       </div>
     </mat-toolbar>

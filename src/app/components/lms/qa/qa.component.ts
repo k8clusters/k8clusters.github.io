@@ -15,9 +15,5 @@ export class QaComponent implements OnInit {
   }
 
   qaType = QuestionType;
-  qa: Qa = { "id": "1", "question": "Whoami?", "options": ["Amit", "Poonam", "Amogh", "Not Sure"], "correctAnswer": "Not Sure", "type": QuestionType.multType }
-  
-  public isMultType(iType: QuestionType) {
-    return iType == QuestionType.multType;
-  }
+  qa: Qa = { "id": "1", "question": "Whoami?", "options": ["Amit", "Poonam", "Amogh", "Not Sure"], "correctAnswer": "Not Sure", "type": QuestionType.multAType }
 }
