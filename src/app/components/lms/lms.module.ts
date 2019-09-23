@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { QaComponent } from './qa/qa.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [QaComponent],
@@ -10,6 +11,7 @@ import { MatRadioModule } from '@angular/material/radio';
   imports: [
     MatRadioModule,
     MatCheckboxModule,
+    MatButtonModule,
     CommonModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA ]

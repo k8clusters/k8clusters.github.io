@@ -51,18 +51,30 @@ export class QaComponent implements OnInit {
       this.qa.answer = [];
     }
   }
+
   private checkAnswers() {
     if (this.arraysEqual(this.qa.answer, this.qa.correctAnswer)) {
       if (!this.qa.point) {
         this.qa.point = 0;
       }
       this.qa.point = 1;
-      console.log(this.qa.point);
     } else {
       this.qa.point = 0;
     }
     if (this.qa.answer.length > 0) {
       this.qa.anwsered = true;
+    }
+  }
+
+  public validate() {
+    if (this.qa.anwsered) {
+      if (this.qa.point > 0) {
+        alert("You Are Boss!!!");
+      } else {
+        alert("Hello Looser!!!")
+      }
+    } else {
+      alert("You are worthless!!!");
     }
   }
 

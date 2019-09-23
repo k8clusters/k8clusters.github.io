@@ -1,4 +1,4 @@
-<form>
+<div>
     <p>{{qa.question}}</p>
     <div [ngSwitch]="qa.type">
         <div *ngSwitchCase="qaType.textType">
@@ -28,4 +28,9 @@
             </div>
         </div>
     </div>
-</form>
+    <br>
+    <br>
+    <div class="options">
+        <button mat-raised-button (click)="validate()">Validate</button>
+    </div>
+</div>
