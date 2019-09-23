@@ -22,7 +22,7 @@
             <div *ngFor="let choice of qa.options">
                 <div class="options">
                     <mat-checkbox [checked]="true" formControlName="choice">
-                        <label>{{choice}}</label>
+                        <label>{{choice.value}}</label>
                     </mat-checkbox>
                 </div>
             </div>

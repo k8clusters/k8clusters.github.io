@@ -93,16 +93,12 @@ body {
     padding: .15rem;
 }
 
-.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
-    border-color:rgb(53, 55, 59); 
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element .mat-radio-button.mat-accent .mat-radio-inner-circle {
+    border-color:black; 
+    background-color:rgb(35, 36, 39);
 }
 
-.mat-radio-button.mat-accent .mat-radio-inner-circle{
-    color:rgb(80, 84, 92);
-    background-color:rgb(80, 84, 92);
+.mat-checkbox .mat-checkbox-frame .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    border-color: black;
+    background-color: rgb(35, 36, 39);
 }
-
-.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
-    background-color:rgb(80, 84, 92);
-}
-
