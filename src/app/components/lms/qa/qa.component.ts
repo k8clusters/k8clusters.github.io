@@ -21,10 +21,7 @@ export class QaComponent implements OnInit {
   qa: Qa = { "id": "1", "question": "Whoami?", "options": [this.getOption(1, "Amit"), this.getOption(2, "Poonam"), this.getOption(3, "Amogh"), this.getOption(4, "Not Sure")], "correctAnswer": ["2", "4"], "type": QuestionType.multMType, }
 
   public onRadioChange(mrChange: MatRadioChange) {
-    if (!this.qa.answer) {
-      this.qa.answer = [];
-    }
-      console.log(this.qa.answer);
+    this.initAnswer();
     if (this.qa.answer.indexOf(mrChange.value)==-1) {
       if (this.qa.type == QuestionType.multMType || this.qa.answer.length < 1) {
         this.qa.answer.push(mrChange.value);
@@ -33,19 +30,11 @@ export class QaComponent implements OnInit {
         this.qa.answer.push(mrChange.value);
       }
     }
-    if (this.arraysEqual(this.qa.answer, this.qa.correctAnswer)) {
-      if (!this.qa.point) {
-        this.qa.point = 0;
-      }
-      this.qa.point = this.qa.point + 1;
-      console.log(this.qa.answer);
-    }
+    this.checkAnswers();
   }
 
   public onCheckboxChange(mrChange: MatCheckboxChange) {
-    if (!this.qa.answer) {
-      this.qa.answer = [];
-    }
+    this.initAnswer();
     if (mrChange.checked && this.qa.answer.indexOf(mrChange.source.value)==-1) {
       this.qa.answer.push(mrChange.source.value);
     } else if(!mrChange.checked){
@@ -54,13 +43,20 @@ export class QaComponent implements OnInit {
         this.qa.answer.splice(index, 1);
       }
     }
+    this.checkAnswers();
+  }
 
+  private initAnswer() {
+    if (!this.qa.answer) {
+      this.qa.answer = [];
+    }
+  }
+  private checkAnswers() {
     if (this.arraysEqual(this.qa.answer, this.qa.correctAnswer)) {
       if (!this.qa.point) {
         this.qa.point = 0;
       }
       this.qa.point = this.qa.point + 1;
-      console.log(this.qa.answer + "|" +this.qa.correctAnswer);
     }
   }
 
