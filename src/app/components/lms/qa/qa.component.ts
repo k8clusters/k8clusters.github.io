@@ -17,7 +17,7 @@ export class QaComponent implements OnInit {
   }
 
   qaType = QuestionType;
-  qa: Qa = { "id": "1", "question": "Whoami?", "options": [this.getOption(1, "Amit"), this.getOption(2, "Poonam"), this.getOption(3, "Amogh"), this.getOption(4, "Not Sure")], "correctAnswer": ["4"], "type": QuestionType.multAType, }
+  qa: Qa = { "id": "1", "question": "Whoami?", "options": [this.getOption(1, "Amit"), this.getOption(2, "Poonam"), this.getOption(3, "Amogh"), this.getOption(4, "Not Sure")], "correctAnswer": ["4"], "type": QuestionType.multMType, }
 
   public onChange(mrChange: MatRadioChange) {
     if (!this.qa.answer) {

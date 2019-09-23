@@ -10,17 +10,21 @@
         <div *ngSwitchCase="qaType.multAType">
             <mat-radio-group>
                 <div *ngFor="let choice of qa.options">
-                    <mat-radio-button value="{{choice.index}}" (change)="onChange($event)">
-                        <label>{{choice.value}}</label>
-                    </mat-radio-button>
+                    <div class="options">
+                        <mat-radio-button value="{{choice.index}}" (change)="onChange($event)">
+                            <label>{{choice.value}}</label>
+                        </mat-radio-button>
+                    </div>
                 </div>
             </mat-radio-group>
         </div>
         <div *ngSwitchCase="qaType.multMType">
             <div *ngFor="let choice of qa.options">
-                <mat-checkbox color="primary" [checked]="true" formControlName="flagRimb">
-                    <label>{{choice}}</label>
-                </mat-checkbox>
+                <div class="options">
+                    <mat-checkbox [checked]="true" formControlName="choice">
+                        <label>{{choice}}</label>
+                    </mat-checkbox>
+                </div>
             </div>
         </div>
     </div>

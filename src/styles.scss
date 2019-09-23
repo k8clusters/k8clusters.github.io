@@ -88,3 +88,21 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
+
+.options {
+    padding: .15rem;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+    border-color:rgb(53, 55, 59); 
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle{
+    color:rgb(80, 84, 92);
+    background-color:rgb(80, 84, 92);
+}
+
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+    background-color:rgb(80, 84, 92);
+}
+
