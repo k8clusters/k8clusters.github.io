@@ -3,6 +3,7 @@ import { Qa } from 'src/app/shared/models/lms/test/qa/qa.model';
 import { QuestionType } from 'src/app/shared/enums/lms/questionType';
 import { MatRadioChange, MatRadioButton } from '@angular/material/radio';
 import { Option } from 'src/app/shared/models/lms/test/qa/option.model';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-qa',
@@ -17,12 +18,13 @@ export class QaComponent implements OnInit {
   }
 
   qaType = QuestionType;
-  qa: Qa = { "id": "1", "question": "Whoami?", "options": [this.getOption(1, "Amit"), this.getOption(2, "Poonam"), this.getOption(3, "Amogh"), this.getOption(4, "Not Sure")], "correctAnswer": ["4"], "type": QuestionType.multMType, }
+  qa: Qa = { "id": "1", "question": "Whoami?", "options": [this.getOption(1, "Amit"), this.getOption(2, "Poonam"), this.getOption(3, "Amogh"), this.getOption(4, "Not Sure")], "correctAnswer": ["2", "4"], "type": QuestionType.multMType, }
 
-  public onChange(mrChange: MatRadioChange) {
+  public onRadioChange(mrChange: MatRadioChange) {
     if (!this.qa.answer) {
       this.qa.answer = [];
     }
+      console.log(this.qa.answer);
     if (this.qa.answer.indexOf(mrChange.value)==-1) {
       if (this.qa.type == QuestionType.multMType || this.qa.answer.length < 1) {
         this.qa.answer.push(mrChange.value);
@@ -32,24 +34,42 @@ export class QaComponent implements OnInit {
       }
     }
     if (this.arraysEqual(this.qa.answer, this.qa.correctAnswer)) {
-      console.log(this.qa.answer);
       if (!this.qa.point) {
         this.qa.point = 0;
       }
       this.qa.point = this.qa.point + 1;
+      console.log(this.qa.answer);
     }
   }
 
-  arraysEqual(a, b) {
+  public onCheckboxChange(mrChange: MatCheckboxChange) {
+    if (!this.qa.answer) {
+      this.qa.answer = [];
+    }
+    if (mrChange.checked && this.qa.answer.indexOf(mrChange.source.value)==-1) {
+      this.qa.answer.push(mrChange.source.value);
+    } else if(!mrChange.checked){
+      const index = this.qa.answer.indexOf(mrChange.source.value, 0);
+      if (index > -1) {
+        this.qa.answer.splice(index, 1);
+      }
+    }
+
+    if (this.arraysEqual(this.qa.answer, this.qa.correctAnswer)) {
+      if (!this.qa.point) {
+        this.qa.point = 0;
+      }
+      this.qa.point = this.qa.point + 1;
+      console.log(this.qa.answer + "|" +this.qa.correctAnswer);
+    }
+  }
+
+  arraysEqual(a: any[], b: any[]) {
     if (a === b) return true;
     if (a == null || b == null) return false;
     if (a.length != b.length) return false;
-
-    // If you don't care about the order of the elements inside
-    // the array, you should sort both arrays here.
-    // Please note that calling sort on an array will modify that array.
-    // you might want to clone your array first.
-
+    a = a.sort();
+    b = b.sort();
     for (var i = 0; i < a.length; ++i) {
       if (a[i] !== b[i]) return false;
     }

@@ -11,7 +11,7 @@
             <mat-radio-group>
                 <div *ngFor="let choice of qa.options">
                     <div class="options">
-                        <mat-radio-button value="{{choice.index}}" (change)="onChange($event)">
+                        <mat-radio-button value="{{choice.index}}" (change)="onRadioChange($event)">
                             <label>{{choice.value}}</label>
                         </mat-radio-button>
                     </div>
@@ -21,7 +21,7 @@
         <div *ngSwitchCase="qaType.multMType">
             <div *ngFor="let choice of qa.options">
                 <div class="options">
-                    <mat-checkbox [checked]="true" formControlName="choice">
+                    <mat-checkbox (change)="onCheckboxChange($event)" value="{{choice.index}}">
                         <label>{{choice.value}}</label>
                     </mat-checkbox>
                 </div>
