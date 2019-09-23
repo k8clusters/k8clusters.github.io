@@ -9,4 +9,5 @@ export interface Qa extends Base {
     type: QuestionType;
     answer?: any[];
     anwsered?: Boolean;
+    point?: number;
   }

@@ -33,6 +33,10 @@ export class QaComponent implements OnInit {
     }
     if (this.arraysEqual(this.qa.answer, this.qa.correctAnswer)) {
       console.log(this.qa.answer);
+      if (!this.qa.point) {
+        this.qa.point = 0;
+      }
+      this.qa.point = this.qa.point + 1;
     }
   }
 
@@ -49,7 +53,11 @@ export class QaComponent implements OnInit {
     for (var i = 0; i < a.length; ++i) {
       if (a[i] !== b[i]) return false;
     }
-  return true;
+    return true;
+  }
+
+  isAnswerCorrect(index: string) {
+    return this.qa.point > 0;
   }
 
   public getOption(pIndex, pValue): Option {
