@@ -10,7 +10,7 @@
         <div *ngSwitchCase="qaType.multAType">
             <mat-radio-group>
                 <div *ngFor="let choice of qa.options">
-                    <mat-radio-button value="{{choice}}"><label>{{choice}}</label></mat-radio-button>
+                    <mat-radio-button value="{{choice.index}}" (change)="onChange($event)"><label>{{choice.value}}</label></mat-radio-button>
                 </div>
             </mat-radio-group>
         </div>
