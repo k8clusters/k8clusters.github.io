@@ -3,11 +3,12 @@ import { Base } from '../../../base.model';
 import { Option } from './option.model';
 
 export interface Qa extends Base {
-    question: string;
-    correctAnswer?: any[];
-    options?: Option[];
-    type: QuestionType;
-    answer?: any[];
-    anwsered?: Boolean;
-    point?: number;
-  }
+  question: string;
+  correctAnswer?: any[];
+  options?: Option[];
+  type: QuestionType;
+  answer?: any[];
+  answered?: Boolean;
+  point?: number;
+  validated?: Boolean;
+}

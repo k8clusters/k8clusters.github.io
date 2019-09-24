@@ -11,9 +11,14 @@
             <mat-radio-group>
                 <div *ngFor="let choice of qa.options">
                     <div class="options">
-                        <mat-radio-button value="{{choice.index}}" (change)="onRadioChange($event)">
-                            <label>{{choice.value}}</label>
-                        </mat-radio-button>
+                        <div [ngClass]="{
+                            'text-success':choice.status === 'O',
+                            'text-fail':choice.status === 'X'
+                            }">
+                            <mat-radio-button value="{{choice.index}}" (change)="onRadioChange($event)">
+                                <label>{{choice.value}}</label>
+                            </mat-radio-button>
+                        </div>
                     </div>
                 </div>
             </mat-radio-group>
@@ -21,9 +26,14 @@
         <div *ngSwitchCase="qaType.multMType">
             <div *ngFor="let choice of qa.options">
                 <div class="options">
-                    <mat-checkbox (change)="onCheckboxChange($event)" value="{{choice.index}}">
-                        <label>{{choice.value}}</label>
-                    </mat-checkbox>
+                    <div [ngClass]="{
+                        'text-success':choice.status === 'O',
+                        'text-fail':choice.status === 'X'
+                        }">
+                        <mat-checkbox (change)="onCheckboxChange($event)" value="{{choice.index}}">
+                            <label>{{choice.value}}</label>
+                        </mat-checkbox>
+                    </div>
                 </div>
             </div>
         </div>
@@ -32,5 +42,9 @@
     <br>
     <div class="options">
         <button mat-raised-button (click)="validate()">Validate</button>
+    </div>
+
+    <div class="options" *ngIf="qa.validated && qa.point == 0">
+        <p>Incorrect answer!!!</p>
     </div>
 </div>

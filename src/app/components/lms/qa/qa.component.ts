@@ -18,7 +18,12 @@ export class QaComponent implements OnInit {
   }
 
   qaType = QuestionType;
-  qa: Qa = { "id": "1", "question": "Whoami?", "options": [this.getOption(1, "Amit"), this.getOption(2, "Poonam"), this.getOption(3, "Amogh"), this.getOption(4, "Not Sure")], "correctAnswer": ["2", "4"], "type": QuestionType.multMType, }
+  qa: Qa = {
+    "id": "1", "question": "Whoami?",
+    "options": [this.getOption(1, "Amit"), this.getOption(2, "Poonam"), this.getOption(3, "Amogh"), this.getOption(4, "Not Sure")],
+    "correctAnswer": ["2"],
+    "type": QuestionType.multAType,
+  }
 
   public onRadioChange(mrChange: MatRadioChange) {
     this.initAnswer();
@@ -62,19 +67,28 @@ export class QaComponent implements OnInit {
       this.qa.point = 0;
     }
     if (this.qa.answer.length > 0) {
-      this.qa.anwsered = true;
+      this.qa.answered = true;
     }
+    console.log(this.qa);
   }
 
   public validate() {
-    if (this.qa.anwsered) {
+    this.qa.validated = true;
+    if (this.qa.answered) {
       if (this.qa.point > 0) {
-        alert("You Are Boss!!!");
+        this.qa.options.forEach(option => {
+          option.show = true;
+          if (this.qa.correctAnswer.indexOf(option.index.toString()) > -1) {
+            option.status = 'O';
+          } else {
+            option.status = 'X';
+          }
+        });
       } else {
-        alert("Hello Looser!!!")
+        this.qa.options.forEach(option => {
+          option.status = null;
+        });
       }
-    } else {
-      alert("You are worthless!!!");
     }
   }
 
