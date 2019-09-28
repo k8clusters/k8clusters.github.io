@@ -1,5 +1,7 @@
 <div>
+    <div>Select any {{qa.maxSelection}} from below choices!!!</div>
     <p>{{qa.question}}</p>
+    <p>Choices {{qa.selectionCounter}}/{{qa.maxSelection}}</p>
     <div [ngSwitch]="qa.qType">
         <div *ngSwitchCase="qType.TextType">
             <input type="text" />
@@ -7,33 +9,17 @@
         <div *ngSwitchCase="qType.BoolType">
             <input type="radio">
         </div>
-        <div *ngSwitchCase="qType.MultAType">
-            <mat-radio-group>
-                <div *ngFor="let choice of qa.choices">
-                    <div class="options">
-                        <div [ngClass]="{
-                            'text-success':choice.correct == true && qa.validated === true,
-                            'text-fail':choice.correct == false && qa.validated === true
-                            }">
-                            <mat-radio-button value="{{choice.index}}" (change)="onChoiceSelection($event.source.value)">
-                                <label>{{choice.value}}</label>
-                            </mat-radio-button>
-                        </div>
-                    </div>
-                </div>
-            </mat-radio-group>
-        </div>
-        <div *ngSwitchCase="qType.MultMType">
+        <div *ngSwitchCase="qType.MultType">
             <div *ngFor="let choice of qa.choices">
                 <div class="options">
-                    <div [ngClass]="{
-                        'text-success':choice.correct == true && qa.validated === true,
-                        'text-fail':choice.correct == false && qa.validated === true
-                        }">
-                        <mat-checkbox (change)="onChoiceSelection($event.source.value)" value="{{choice.index}}">
-                            <label>{{choice.value}}</label>
-                        </mat-checkbox>
-                    </div>
+                    <mat-checkbox value="{{choice.index}}" 
+                        [disabled]="choice.disabled" 
+                        [checked]="choice.checked"
+                        [ngModelOptions]="{standalone: true}"
+                        (change)="choice.checked = !choice.checked"
+                        (change)="onChoiceSelection($event.source.value)">
+                        <label>{{choice.value}}</label>
+                    </mat-checkbox>
                 </div>
             </div>
         </div>
@@ -44,7 +30,16 @@
         <button mat-raised-button (click)="validate()">Validate</button>
     </div>
 
-    <div class="options" *ngIf="qa.validated && qa.point === 1">
-        <p>Got it</p>
+    <div class="options" *ngIf="qa.validated && qa.revealed">
+        <ul>
+            <div *ngFor="let choice of qa.choices">
+                    <div [ngClass]="{
+                        'text-success':choice.correct == true && qa.validated === true,
+                        'text-fail':choice.correct == false && qa.validated === true
+                        }">
+                    <li>{{choice.hint}}</li>
+                </div>
+            </div>
+        </ul>
     </div>
 </div>

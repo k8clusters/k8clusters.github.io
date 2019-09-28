@@ -11,12 +11,11 @@
  */
 
 
-export type QuestionType = 'textType' | 'boolType' | 'multAType' | 'multMType';
+export type QuestionType = 'textType' | 'boolType' | 'multType';
 
 export const QuestionType = {
     TextType: 'textType' as QuestionType,
     BoolType: 'boolType' as QuestionType,
-    MultAType: 'multAType' as QuestionType,
-    MultMType: 'multMType' as QuestionType
+    MultType: 'multType' as QuestionType
 };
 

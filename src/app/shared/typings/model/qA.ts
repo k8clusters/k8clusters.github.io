@@ -25,6 +25,7 @@ export interface QA {
     ownerOrganization?: string;
     question?: string;
     choices?: Array<Answer>;
+    revealed?: boolean;
     maxSelection?: number;
     selectionCounter?: number;
     point?: number;

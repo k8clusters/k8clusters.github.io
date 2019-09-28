@@ -19,62 +19,77 @@ export class QaComponent implements OnInit {
 
   qType = QuestionType;
   qa: QA = {
-    "id": "1", "question": "Whoami?",
-    "choices": [this.getChoice(1, "Amit", false), this.getChoice(2, "Poonam", true), this.getChoice(3, "Amogh", true), this.getChoice(4, "Not Sure", false)],
-    "qType": QuestionType.MultAType,
+    "id": "1", "question": "Who are you?",
+    "choices": [
+      this.getChoice(1, "Amit", false, "Always missing!!!"),
+      this.getChoice(2, "Poonam", true, "She is always there!!!"),
+      this.getChoice(3, "Amogh", false, "He is Hero!!!"),
+      this.getChoice(4, "Not Sure", true, "Who is it?")
+    ],
+    "qType": QuestionType.MultType,
+    "point": 0,
+    "selectionCounter": 0,
+    "maxSelection": 2
   }
 
   public onChoiceSelection = (selectionValue: number) => {
-    if (this.qa.submitted) {
+    this.qa.selectionCounter = 0;
+    if (this.qa.validated) {
       this.initAnswer();
     }
-
     this.qa.choices.forEach((choice) => {
-      this.processSelection(choice, selectionValue);
+      this.processSelectionCounter(choice, selectionValue);
     });
+    this.qa.choices.forEach((choice) => {
+      this.processDisableChoices(choice, selectionValue);
+    });
+  }
 
-    if (this.qa.qType == QuestionType.MultAType || !(this.qa.selectionCounter < this.qa.maxSelection)) {
-      this.qa.choices.forEach((choice) => {
-        choice.disabled = true;
-      });
+  private processSelectionCounter = (choice: Answer, selectionValue: number) => {
+    if (choice.checked) {
+      this.qa.selectionCounter = this.qa.selectionCounter + 1;
     }
   }
 
-  private processSelection = (choice: Answer, selectionValue: number) => {
-    if (choice.index == selectionValue) {
-      choice.selected = true;
-      this.qa.submitted = true;
+  private processDisableChoices = (choice: Answer, selectionValue: number) => {
+    if (!(this.qa.selectionCounter < this.qa.maxSelection) && !choice.checked) {
+      choice.disabled = true;
+    } else {
+      choice.disabled = false;
     }
   }
 
   private initAnswer = () => {
+    console.log('init: '+this.qa);
     this.qa.submitted = false;
+    this.qa.revealed = false;
     this.qa.validated = false;
     this.qa.point = 0;
+    this.qa.selectionCounter = 0;
     this.qa.choices.forEach((choice) => {
-      choice.selected = false;
+      choice.checked = false;
+      choice.disabled = false;
     });
   }
 
   public validate() {
-    this.qa.validated = true;
-    console.log(this.qa)
-    if (this.qa.submitted) {
+    if (this.qa.selectionCounter > 0) {
+      this.qa.validated = true;
       this.qa.choices.forEach(choice => {
-        if (choice.selected === true && choice.correct === true && this.qa.point != -1) {
+        if (choice.checked === true && choice.correct && !(this.qa.point == -1)) {
           this.qa.point = 1;
-        } else if (choice.selected === true && (!choice.correct)){
+        } else if (choice.checked === true ) {
           this.qa.point = -1;
         }
       });
-      if (this.qa.point == 1) {
+      if (this.qa.point === 1) {
+        this.qa.revealed = true;
         this.qa.choices.forEach(choice => {
-          choice.revealed = true;
           choice.hintVisible = choice.correct;
         });
+      } else {
+        this.qa.revealed = false;
       }
-    } else {
-      this.qa.point = -1;
     }
   }
 
@@ -95,7 +110,16 @@ export class QaComponent implements OnInit {
   }
 
   public getChoice(pIndex: number, pValue: string, pCorrect: boolean, pHint?: string, pHintVisible?:boolean, pVisible: boolean = true): Answer {
-    let option : Answer = { "index": pIndex, "value": pValue, "correct": pCorrect, "hint": pHint, "hintVisible": pHintVisible, "visible": pVisible};
+    let option: Answer = {
+      "index": pIndex,
+      "value": pValue,
+      "correct": pCorrect,
+      "hint": pHint,
+      "hintVisible": pHintVisible,
+      "visible": pVisible,
+      "checked": false,
+      "disabled": false
+    };
     return option;
   }
 }

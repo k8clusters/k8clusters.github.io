@@ -17,9 +17,8 @@ export interface Answer {
     visible?: boolean;
     disabled?: boolean;
     correct?: boolean;
-    revealed?: boolean;
     hint?: string;
     hintVisible?: boolean;
-    selected?: boolean;
+    checked?: boolean;
 }
 

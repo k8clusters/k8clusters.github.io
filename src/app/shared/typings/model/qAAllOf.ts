@@ -16,6 +16,7 @@ import { QuestionType } from './questionType';
 export interface QAAllOf { 
     question?: string;
     choices?: Array<Answer>;
+    revealed?: boolean;
     maxSelection?: number;
     selectionCounter?: number;
     point?: number;
