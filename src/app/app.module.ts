@@ -14,7 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
-import { LmsModule } from './components/lms/lms.module';
+import { LmsModule } from './lms/lms.module';
 
 @NgModule({
   declarations: [

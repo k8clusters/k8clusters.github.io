@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatRadioChange, MatRadioButton } from '@angular/material/radio';
-import { MatCheckboxChange } from '@angular/material/checkbox';
 import { QuestionType } from 'src/app/shared/typings/model/questionType';
 import { QA } from 'src/app/shared/typings/model/qA';
 import { Answer } from 'src/app/shared/typings/model/answer';
-import { QaTestSampleGenService } from 'src/app/services/lms/qa-test-sample-gen.service';
+import { QaTestService } from '../../services/core/qa-test.service';
 
 @Component({
   selector: 'app-qa',
@@ -13,11 +11,17 @@ import { QaTestSampleGenService } from 'src/app/services/lms/qa-test-sample-gen.
 })
 export class QaComponent implements OnInit {
 
-  constructor(private qaTestSampleGenService: QaTestSampleGenService) { }
+  constructor(private qaTestService: QaTestService) { 
+    this.qaTestService.currentQaIndex.subscribe(qaIndex => {
+      this.qaIndex = qaIndex;
+      this.qa = this.qaTestService.getQaTest()[this.qaIndex];
+    });
+  }
 
   ngOnInit() {
-    this.qa = this.qaTestSampleGenService.getQaTest(2)[1];
   }
+
+  private qaIndex: number;
 
   qType = QuestionType;
   qa: QA;
