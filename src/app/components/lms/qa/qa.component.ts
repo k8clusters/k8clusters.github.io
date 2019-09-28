@@ -60,7 +60,6 @@ export class QaComponent implements OnInit {
   }
 
   private initAnswer = () => {
-    console.log('init: '+this.qa);
     this.qa.submitted = false;
     this.qa.revealed = false;
     this.qa.validated = false;
