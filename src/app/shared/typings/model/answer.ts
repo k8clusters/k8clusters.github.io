@@ -11,8 +11,15 @@
  */
 
 
-export interface ModelError { 
-    error?: string;
-    exception?: string;
+export interface Answer { 
+    index: number;
+    value: string;
+    visible?: boolean;
+    disabled?: boolean;
+    correct?: boolean;
+    revealed?: boolean;
+    hint?: string;
+    hintVisible?: boolean;
+    selected?: boolean;
 }
 

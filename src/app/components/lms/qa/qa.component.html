@@ -1,21 +1,21 @@
 <div>
     <p>{{qa.question}}</p>
-    <div [ngSwitch]="qa.type">
-        <div *ngSwitchCase="qaType.textType">
+    <div [ngSwitch]="qa.qType">
+        <div *ngSwitchCase="qType.TextType">
             <input type="text" />
         </div>
-        <div *ngSwitchCase="qaType.boolType">
+        <div *ngSwitchCase="qType.BoolType">
             <input type="radio">
         </div>
-        <div *ngSwitchCase="qaType.multAType">
+        <div *ngSwitchCase="qType.MultAType">
             <mat-radio-group>
-                <div *ngFor="let choice of qa.options">
+                <div *ngFor="let choice of qa.choices">
                     <div class="options">
                         <div [ngClass]="{
-                            'text-success':choice.status === 'O',
-                            'text-fail':choice.status === 'X'
+                            'text-success':choice.correct == true && qa.validated === true,
+                            'text-fail':choice.correct == false && qa.validated === true
                             }">
-                            <mat-radio-button value="{{choice.index}}" (change)="onRadioChange($event)">
+                            <mat-radio-button value="{{choice.index}}" (change)="onChoiceSelection($event.source.value)">
                                 <label>{{choice.value}}</label>
                             </mat-radio-button>
                         </div>
@@ -23,14 +23,14 @@
                 </div>
             </mat-radio-group>
         </div>
-        <div *ngSwitchCase="qaType.multMType">
-            <div *ngFor="let choice of qa.options">
+        <div *ngSwitchCase="qType.MultMType">
+            <div *ngFor="let choice of qa.choices">
                 <div class="options">
                     <div [ngClass]="{
-                        'text-success':choice.status === 'O',
-                        'text-fail':choice.status === 'X'
+                        'text-success':choice.correct == true && qa.validated === true,
+                        'text-fail':choice.correct == false && qa.validated === true
                         }">
-                        <mat-checkbox (change)="onCheckboxChange($event)" value="{{choice.index}}">
+                        <mat-checkbox (change)="onChoiceSelection($event.source.value)" value="{{choice.index}}">
                             <label>{{choice.value}}</label>
                         </mat-checkbox>
                     </div>
@@ -44,7 +44,7 @@
         <button mat-raised-button (click)="validate()">Validate</button>
     </div>
 
-    <div class="options" *ngIf="qa.validated && qa.point == 0">
-        <p>Incorrect answer!!!</p>
+    <div class="options" *ngIf="qa.validated && qa.point === 1">
+        <p>Got it</p>
     </div>
 </div>

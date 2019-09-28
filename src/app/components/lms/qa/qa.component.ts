@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Qa } from 'src/app/shared/models/lms/test/qa/qa.model';
-import { QuestionType } from 'src/app/shared/enums/lms/questionType';
 import { MatRadioChange, MatRadioButton } from '@angular/material/radio';
-import { Option } from 'src/app/shared/models/lms/test/qa/option.model';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { QuestionType } from 'src/app/shared/typings/model/questionType';
+import { QA } from 'src/app/shared/typings/model/qA';
+import { Answer } from 'src/app/shared/typings/model/answer';
 
 @Component({
   selector: 'app-qa',
@@ -17,78 +17,64 @@ export class QaComponent implements OnInit {
   ngOnInit() {
   }
 
-  qaType = QuestionType;
-  qa: Qa = {
+  qType = QuestionType;
+  qa: QA = {
     "id": "1", "question": "Whoami?",
-    "options": [this.getOption(1, "Amit"), this.getOption(2, "Poonam"), this.getOption(3, "Amogh"), this.getOption(4, "Not Sure")],
-    "correctAnswer": ["2"],
-    "type": QuestionType.multAType,
+    "choices": [this.getChoice(1, "Amit", false), this.getChoice(2, "Poonam", true), this.getChoice(3, "Amogh", true), this.getChoice(4, "Not Sure", false)],
+    "qType": QuestionType.MultAType,
   }
 
-  public onRadioChange(mrChange: MatRadioChange) {
-    this.initAnswer();
-    if (this.qa.answer.indexOf(mrChange.value)==-1) {
-      if (this.qa.type == QuestionType.multMType || this.qa.answer.length < 1) {
-        this.qa.answer.push(mrChange.value);
-      } else {
-        this.qa.answer = [];
-        this.qa.answer.push(mrChange.value);
-      }
+  public onChoiceSelection = (selectionValue: number) => {
+    if (this.qa.submitted) {
+      this.initAnswer();
     }
-    this.checkAnswers();
-  }
 
-  public onCheckboxChange(mrChange: MatCheckboxChange) {
-    this.initAnswer();
-    if (mrChange.checked && this.qa.answer.indexOf(mrChange.source.value)==-1) {
-      this.qa.answer.push(mrChange.source.value);
-    } else if(!mrChange.checked){
-      const index = this.qa.answer.indexOf(mrChange.source.value, 0);
-      if (index > -1) {
-        this.qa.answer.splice(index, 1);
-      }
-    }
-    this.checkAnswers();
-  }
+    this.qa.choices.forEach((choice) => {
+      this.processSelection(choice, selectionValue);
+    });
 
-  private initAnswer() {
-    if (!this.qa.answer) {
-      this.qa.answer = [];
+    if (this.qa.qType == QuestionType.MultAType || !(this.qa.selectionCounter < this.qa.maxSelection)) {
+      this.qa.choices.forEach((choice) => {
+        choice.disabled = true;
+      });
     }
   }
 
-  private checkAnswers() {
-    if (this.arraysEqual(this.qa.answer, this.qa.correctAnswer)) {
-      if (!this.qa.point) {
-        this.qa.point = 0;
-      }
-      this.qa.point = 1;
-    } else {
-      this.qa.point = 0;
+  private processSelection = (choice: Answer, selectionValue: number) => {
+    if (choice.index == selectionValue) {
+      choice.selected = true;
+      this.qa.submitted = true;
     }
-    if (this.qa.answer.length > 0) {
-      this.qa.answered = true;
-    }
-    console.log(this.qa);
+  }
+
+  private initAnswer = () => {
+    this.qa.submitted = false;
+    this.qa.validated = false;
+    this.qa.point = 0;
+    this.qa.choices.forEach((choice) => {
+      choice.selected = false;
+    });
   }
 
   public validate() {
     this.qa.validated = true;
-    if (this.qa.answered) {
-      if (this.qa.point > 0) {
-        this.qa.options.forEach(option => {
-          option.show = true;
-          if (this.qa.correctAnswer.indexOf(option.index.toString()) > -1) {
-            option.status = 'O';
-          } else {
-            option.status = 'X';
-          }
-        });
-      } else {
-        this.qa.options.forEach(option => {
-          option.status = null;
+    console.log(this.qa)
+    if (this.qa.submitted) {
+      this.qa.choices.forEach(choice => {
+        if (choice.selected === true && choice.correct === true && this.qa.point != -1) {
+          this.qa.point = 1;
+        } else if (choice.selected === true && (!choice.correct)){
+          this.qa.point = -1;
+        }
+      });
+      if (this.qa.point == 1) {
+        this.qa.choices.forEach(choice => {
+          choice.revealed = true;
+          choice.hintVisible = choice.correct;
         });
       }
+    } else {
+      this.qa.point = -1;
     }
   }
 
@@ -104,12 +90,12 @@ export class QaComponent implements OnInit {
     return true;
   }
 
-  isAnswerCorrect(index: string) {
+  isAnswerCorrect() {
     return this.qa.point > 0;
   }
 
-  public getOption(pIndex, pValue): Option {
-    let option = { "index": pIndex, "value": pValue};
+  public getChoice(pIndex: number, pValue: string, pCorrect: boolean, pHint?: string, pHintVisible?:boolean, pVisible: boolean = true): Answer {
+    let option : Answer = { "index": pIndex, "value": pValue, "correct": pCorrect, "hint": pHint, "hintVisible": pHintVisible, "visible": pVisible};
     return option;
   }
 }

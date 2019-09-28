@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import { BaseAllOf } from './baseAllOf';
-import { ModelError } from './modelError';
+import { ErrorMessage } from './errorMessage';
 
 
 export interface Base { 

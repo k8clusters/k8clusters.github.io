@@ -9,16 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { Answer } from './answer';
 
 
-export interface QAAllOf { 
-    question?: string;
-    correctAnswers?: Array<number>;
-    options?: Array<Answer>;
-    submissions?: Array<number>;
-    point?: number;
-    submitted?: boolean;
-    validated?: boolean;
+export interface ErrorMessage { 
+    error?: string;
+    exception?: string;
 }
 

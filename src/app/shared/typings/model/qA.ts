@@ -11,6 +11,7 @@
  */
 import { Answer } from './answer';
 import { QAAllOf } from './qAAllOf';
+import { QuestionType } from './questionType';
 import { Base } from './base';
 
 
@@ -23,11 +24,12 @@ export interface QA {
     owner?: string;
     ownerOrganization?: string;
     question?: string;
-    correctAnswers?: Array<number>;
-    options?: Array<Answer>;
-    submissions?: Array<number>;
+    choices?: Array<Answer>;
+    maxSelection?: number;
+    selectionCounter?: number;
     point?: number;
     submitted?: boolean;
     validated?: boolean;
+    qType?: QuestionType;
 }
 
