@@ -10,7 +10,7 @@
       <mat-divider></mat-divider>
       <a mat-list-item>Division</a>
       <mat-list-item *ngFor="let division of divisions">
-          <a mat-list-item href="#" routerLink="qa">{{division.grade}}</a>
+          <a mat-list-item href="#" routerLink="{{division.route}}">{{division.grade}}</a>
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>

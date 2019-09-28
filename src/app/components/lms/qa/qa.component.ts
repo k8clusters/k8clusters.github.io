@@ -4,6 +4,7 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 import { QuestionType } from 'src/app/shared/typings/model/questionType';
 import { QA } from 'src/app/shared/typings/model/qA';
 import { Answer } from 'src/app/shared/typings/model/answer';
+import { QaTestSampleGenService } from 'src/app/services/lms/qa-test-sample-gen.service';
 
 @Component({
   selector: 'app-qa',
@@ -12,26 +13,14 @@ import { Answer } from 'src/app/shared/typings/model/answer';
 })
 export class QaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private qaTestSampleGenService: QaTestSampleGenService) { }
 
   ngOnInit() {
+    this.qa = this.qaTestSampleGenService.getQaTest(2)[1];
   }
 
   qType = QuestionType;
-  qa: QA = {
-    "id": "1", "question": "Who are you?",
-    "choices": [
-      this.getChoice(1, "Amit", false, "Always missing!!!"),
-      this.getChoice(2, "Poonam", true, "She is always there!!!"),
-      this.getChoice(3, "Amogh", false, "He is Hero!!!"),
-      this.getChoice(4, "Not Sure", true, "Who is it?")
-    ],
-    "qType": QuestionType.MultType,
-    "point": 0,
-    "selectionCounter": 0,
-    "maxSelection": 2
-  }
-
+  qa: QA;
   public onChoiceSelection = (selectionValue: number) => {
     this.qa.selectionCounter = 0;
     if (this.qa.validated) {
@@ -108,17 +97,4 @@ export class QaComponent implements OnInit {
     return this.qa.point > 0;
   }
 
-  public getChoice(pIndex: number, pValue: string, pCorrect: boolean, pHint?: string, pHintVisible?:boolean, pVisible: boolean = true): Answer {
-    let option: Answer = {
-      "index": pIndex,
-      "value": pValue,
-      "correct": pCorrect,
-      "hint": pHint,
-      "hintVisible": pHintVisible,
-      "visible": pVisible,
-      "checked": false,
-      "disabled": false
-    };
-    return option;
-  }
 }

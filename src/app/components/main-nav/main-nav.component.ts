@@ -19,5 +19,8 @@ export class MainNavComponent {
   constructor(private breakpointObserver: BreakpointObserver) {}
 
 
-  public divisions: any = [{'grade':'4th', 'route':'qa'}];
+  public divisions: any = [
+    { 'grade': '4th', 'route': 'qa' },
+    { 'grade': '5th', 'route': 'qaTest' }
+  ];
 }
