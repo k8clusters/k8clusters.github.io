@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { QaTestSampleGenService } from '../../services/mock/qa-test-sample-gen.service';
 import { QaTestService } from '../../services/core/qa-test.service';
 
 @Component({
@@ -20,6 +19,10 @@ export class QaTestComponent implements OnInit {
   }
 
   private qaIndex: number;
+
+  newTest = () => {
+    this.qaTestService.getNewTest();
+  }
 
   next = () => {
     this.qaTestService.nextQaIndex();

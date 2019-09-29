@@ -5,6 +5,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { QaTestComponent } from './components/qa-test/qa-test.component';
+import { QaTestService } from './services/core/qa-test.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -14,9 +16,10 @@ import { QaTestComponent } from './components/qa-test/qa-test.component';
     MatRadioModule,
     MatCheckboxModule,
     MatButtonModule,
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  
+  providers: [QaTestService]
 })
 export class LmsModule { }
