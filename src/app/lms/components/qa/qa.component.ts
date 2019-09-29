@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionType } from 'src/app/shared/typings/model/questionType';
 import { QA } from 'src/app/shared/typings/model/qA';
-import { Answer } from 'src/app/shared/typings/model/answer';
+import { Choice } from 'src/app/shared/typings/model/choice';
 import { QaTestService } from '../../services/core/qa-test.service';
 
 @Component({
@@ -38,13 +38,13 @@ export class QaComponent implements OnInit {
     });
   }
 
-  private processSelectionCounter = (choice: Answer, selectionValue: number) => {
+  private processSelectionCounter = (choice: Choice, selectionValue: number) => {
     if (choice.checked) {
       this.qa.selectionCounter = this.qa.selectionCounter + 1;
     }
   }
 
-  private processDisableChoices = (choice: Answer, selectionValue: number) => {
+  private processDisableChoices = (choice: Choice, selectionValue: number) => {
     if (!(this.qa.selectionCounter < this.qa.maxSelection) && !choice.checked) {
       choice.disabled = true;
     } else {

@@ -9,8 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { Answer } from './answer';
 import { QAAllOf } from './qAAllOf';
+import { Choice } from './choice';
 import { QuestionType } from './questionType';
 import { Base } from './base';
 
@@ -24,7 +24,7 @@ export interface QA {
     owner?: string;
     ownerOrganization?: string;
     question?: string;
-    choices?: Array<Answer>;
+    choices?: Array<Choice>;
     revealed?: boolean;
     maxSelection?: number;
     selectionCounter?: number;

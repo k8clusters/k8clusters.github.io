@@ -11,7 +11,7 @@
  */
 
 
-export interface Answer { 
+export interface Choice { 
     index: number;
     value: string;
     visible?: boolean;
