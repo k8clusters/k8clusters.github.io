@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { QaTestComponent } from './components/qa-test/qa-test.component';
 import { QaTestService } from './services/core/qa-test.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatRadioModule,
     MatCheckboxModule,
     MatButtonModule,
+    MatCardModule,
     CommonModule,
     HttpClientModule
   ],
