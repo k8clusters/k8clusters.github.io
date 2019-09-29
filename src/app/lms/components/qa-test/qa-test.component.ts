@@ -8,14 +8,15 @@ import { QaTestService } from '../../services/core/qa-test.service';
 })
 export class QaTestComponent implements OnInit {
 
-  constructor(private qaTestService: QaTestService) { 
+  constructor(private qaTestService: QaTestService) {
+    console.log('QaTestComponent');
     this.qaTestService.currentQaIndex.subscribe(qaIndex => {
       this.qaIndex = qaIndex;
     });
   }
 
   ngOnInit() {
-    this.next();
+    console.log('QaTestComponentInit');
   }
 
   private qaIndex: number;

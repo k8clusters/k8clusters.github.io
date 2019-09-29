@@ -11,6 +11,7 @@ export class QaTestService {
   qaServiceUrl: string = 'http://k8s-qaservice.local.k8cluster.io:8085/k8s/qaservice/qaList/';
 
   constructor(private qaTestSampleGenService: QaTestSampleGenService, private httpClient: HttpClient) { 
+    console.log('QaTestService');
     this.qaTest = [];
     this.getQaTestFromService(5).subscribe(data => {
       this.qaTest = data;

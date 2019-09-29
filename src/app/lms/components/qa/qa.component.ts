@@ -11,7 +11,8 @@ import { QaTestService } from '../../services/core/qa-test.service';
 })
 export class QaComponent implements OnInit {
 
-  constructor(private qaTestService: QaTestService) { 
+  constructor(private qaTestService: QaTestService) {
+    console.log('QaComponent');
     this.qaTestService.currentQaIndex.subscribe(qaIndex => {
       this.qaIndex = qaIndex;
       this.qa = this.qaTestService.getQaTest()[this.qaIndex];
@@ -19,6 +20,7 @@ export class QaComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('QaComponentInit');
   }
 
   private qaIndex: number;
@@ -70,7 +72,7 @@ export class QaComponent implements OnInit {
       this.qa.choices.forEach(choice => {
         if (choice.checked === true && choice.correct && !(this.qa.point == -1)) {
           this.qa.point = 1;
-        } else if (choice.checked === true ) {
+        } else if (choice.checked === true) {
           this.qa.point = -1;
         }
       });
