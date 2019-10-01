@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { LmsModule } from './lms/lms.module';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { LmsModule } from './lms/lms.module';
     FormsModule,
     LayoutModule,
     MatButtonModule,
+    MatCardModule,
     MatIconModule,
     MatListModule,
     MatSidenavModule,
