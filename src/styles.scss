@@ -12,7 +12,6 @@ body {
     font-family: 'Raleway','Arial';
     color: #fff;
     margin: auto;
-    overflow: hidden;
 }
 
 .mat-drawer-inner-container {
@@ -140,4 +139,30 @@ body {
 .box-code {
     border-style: dashed; 
     overflow: visible;
+}
+
+.mat-card {
+   background: #60c0ff;
+}
+
+.mat-card-title {
+   color: red;
+   background: #60c0ff;
+   padding: 16px;
+}
+
+.mat-card-subtitle {
+   background: #60c0ff;
+   padding: 16px;
+   color: #6e6e6e;
+}
+
+.mat-card-content {
+   color: black;   
+   background: #60c0ff;
+   padding: 10px;
+}
+
+.align-button-right {
+    float: right;
 }

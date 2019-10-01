@@ -1,16 +1,24 @@
-<p>qa-test works!</p>
 <mat-card>
-    <div class="options">
-        <button mat-raised-button (click)="newTest()">New Test</button>&nbsp;&nbsp;&nbsp;&nbsp;
-        <button mat-raised-button (click)="back()" [disabled]="qaIndex == 0">Back</button>&nbsp;&nbsp;&nbsp;&nbsp;
-        <button mat-raised-button (click)="next()">Next</button>
-    </div>
+    <mat-card>
+        <mat-card-subtitle>
+            <button mat-raised-button (click)="newTest()">New Test</button>
+        </mat-card-subtitle>
+    </mat-card>
+    <mat-card>
+        <mat-card-subtitle>
+            <button mat-raised-button (click)="back()" [disabled]="qaIndex == 0">Back</button>
+            <button mat-raised-button (click)="next()" [disabled]="qaIndex == qaCount()"
+                class="align-button-right">Next</button>
+        </mat-card-subtitle>
+    </mat-card>
 </mat-card>
+<br>
+<br>
 <mat-card>
     <app-qa></app-qa>
 </mat-card>
-<div class="box box-default box-code">
+<!-- <div class="box box-default box-code">
     <code>
         <pre class="box-code">{{qaTest |json}}</pre>
     </code>
-</div>
+</div> -->

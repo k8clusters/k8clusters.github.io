@@ -12,7 +12,7 @@ export class QaTestSampleGenService {
 
 
   public getQaTest = (qCount: number = 2): Array<QA> => {
-    let qaTest:QA[] = [];
+    let qaTest: QA[] = [];
     qaTest.push(this.qa);
     let qa = Object.assign({}, this.qa);
     qa.id = "2";
@@ -35,8 +35,8 @@ export class QaTestSampleGenService {
     "selectionCounter": 0,
     "maxSelection": 2
   }
-  
-  public getChoice(pIndex: number, pValue: string, pCorrect: boolean, pHint?: string, pHintVisible?:boolean, pVisible: boolean = true): Answer {
+
+  public getChoice(pIndex: number, pValue: string, pCorrect: boolean, pHint?: string, pHintVisible?: boolean, pVisible: boolean = true): Answer {
     let option: Answer = {
       "index": pIndex,
       "value": pValue,

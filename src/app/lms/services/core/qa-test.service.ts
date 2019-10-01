@@ -12,7 +12,7 @@ export class QaTestService {
 
   constructor(private qaTestSampleGenService: QaTestSampleGenService, private httpClient: HttpClient) { 
     console.log('QaTestService');
-    this.qaTest = [];
+    this.qaTest = this.qaTestSampleGenService.getQaTest(10);
     this.getQaTestFromService(5).subscribe(data => {
       this.qaTest = data;
     });

@@ -19,7 +19,7 @@ export class QaTestComponent implements OnInit {
     console.log('QaTestComponentInit');
   }
 
-  private qaIndex: number;
+  public qaIndex: number;
 
   newTest = () => {
     this.qaTestService.getNewTest();
@@ -31,6 +31,10 @@ export class QaTestComponent implements OnInit {
 
   back = () => {
     this.qaTestService.backQaIndex();
+  }
+
+  qaCount = (): number => {
+    return this.qaTestService.getQaTest().length - 1;
   }
 
 }
