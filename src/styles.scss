@@ -14,9 +14,6 @@ body {
     margin: auto;
 }
 
-.mat-drawer-inner-container {
-  overflow: hidden !important;
- }
 
 .mat-toolbar {
     display: inline;
@@ -26,6 +23,12 @@ body {
     font-weight: bolder;
     color: black;
     border-radius: 4px;
+}
+
+.sidenav {
+  width: 200px;
+  background-color: #3fa0e1;
+  box-shadow: 3px 0 6px rgba(0,0,0,.24);
 }
 
 .rainbow-text {
@@ -138,7 +141,6 @@ body {
 
 .box-code {
     border-style: dashed; 
-    overflow: visible;
 }
 
 .nav-color-dark {
@@ -153,19 +155,19 @@ body {
 
 .mat-card-title {
    color: red;
-   background: #def2ff;
+   background: #60c0ff;
    padding: 16px;
 }
 
 .mat-card-subtitle {
-   background: #def2ff;
+   background: #60c0ff;
    padding: 16px;
    color: #6e6e6e;
 }
 
 .mat-card-content {
    color: black;   
-   background: #def2ff;
+   background: #60c0ff;
    padding: 10px;
 }
 

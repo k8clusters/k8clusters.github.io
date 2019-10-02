@@ -11,7 +11,7 @@ export class QaTestService {
   serviceName: string = 'k8s-qaservice';
   servicePort: number = 2002;
   qaCount: number = 10;
-  qaServiceUrl: string = `http://${this.serviceName}.${environment.backend.host}:${this.servicePort}/${environment.backend.basePath}`;
+  qaServiceUrl: string = `${environment.backend.protocol}${this.serviceName}.${environment.backend.host}:${this.servicePort}/${environment.backend.basePath}`;
 
   constructor(private qaTestSampleGenService: QaTestSampleGenService, private httpClient: HttpClient) {
     console.log('QaTestService');
