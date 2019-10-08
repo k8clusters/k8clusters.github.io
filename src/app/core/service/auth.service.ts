@@ -44,9 +44,13 @@ export class AuthService {
   }
 
   isUserLoggedIn() {
-    let user = sessionStorage.getItem('username')
+    let user = sessionStorage.getItem('username');
     console.log(!(user === null))
     return !(user === null);
+  }
+
+  getJwt = () => {
+    return sessionStorage.getItem('token');
   }
 
   logOut() {

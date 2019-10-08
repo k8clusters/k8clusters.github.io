@@ -4,6 +4,7 @@ import { QA } from 'src/app/shared/typings/model/qA';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment'
+import { AuthService } from 'src/app/core/service/auth.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +14,7 @@ export class QaTestService {
   qaCount: number = 10;
   qaServiceUrl: string = `${environment.backend.protocol}${this.serviceName}.${environment.backend.host}:${this.servicePort}/${environment.backend.basePath}`;
 
-  constructor(private qaTestSampleGenService: QaTestSampleGenService, private httpClient: HttpClient) {
+  constructor(private qaTestSampleGenService: QaTestSampleGenService, private authService: AuthService, private httpClient: HttpClient) {
     console.log('QaTestService');
     this.qaTest = this.qaTestSampleGenService.getQaTest(10);
     this.getQaTestFromService(5).subscribe(data => {
@@ -53,7 +54,7 @@ export class QaTestService {
 
   getQaTestFromService = (qaCount: number = 10) => {
     let header = new HttpHeaders();
-    header = header.set('Authorization', environment.backend.defaultJwt);
+    header = header.set('Authorization', this.authService.getJwt());
     return this.httpClient.get<QA[]>(`${this.qaServiceUrl}/qaList/${this.qaCount}`, {
       headers: header
     });
