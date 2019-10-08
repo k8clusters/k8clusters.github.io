@@ -16,6 +16,7 @@ import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { LmsModule } from './lms/lms.module';
 import { MatCardModule } from '@angular/material/card';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MatCardModule } from '@angular/material/card';
     MatSidenavModule,
     MatToolbarModule,
     BrowserAnimationsModule,
-    LmsModule
+    LmsModule,
+    CoreModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

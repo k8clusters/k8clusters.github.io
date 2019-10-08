@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-title>
+        Login
+        <mat-card-subtitle> Login with User/Password</mat-card-subtitle>
+    </mat-card-title>
+    <mat-card-content>
+        <mat-card-subtitle>
+            User Name : <input type="text" name="username" [(ngModel)]="username">
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+            Password : <input type="password" name="password" [(ngModel)]="password">
+        </mat-card-subtitle>
+    </mat-card-content>
+    <mat-card-footer>
+        <button mat-raised-button (click)=checkLogin()>
+            Login
+        </button>
+    </mat-card-footer>
+</mat-card>
