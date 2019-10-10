@@ -1,24 +1,16 @@
 <mat-card>
-    <mat-grid-list cols="1" rowHeight="100px">
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <mat-card-title>
-                <mat-card-actions>
-                    <button mat-raised-button (click)="newTest()">New Test</button>
-                </mat-card-actions>
-            </mat-card-title>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <app-qa></app-qa>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <mat-card-subtitle>
-                <mat-card-actions>
-                    <button mat-raised-button (click)="back()" [disabled]="qaIndex == 0">Back</button>
-                    <button mat-raised-button (click)="next()" [disabled]="qaIndex == qaCount()">Next</button>
-                </mat-card-actions>
-            </mat-card-subtitle>
-        </mat-grid-tile>
-    </mat-grid-list>
+    <mat-card-title>
+        <mat-card-actions>
+            <button mat-raised-button (click)="newTest()">New Test</button>
+        </mat-card-actions>
+    </mat-card-title>
+    <app-qa></app-qa>
+    <mat-card-subtitle>
+        <mat-card-actions>
+            <button mat-raised-button (click)="back()" [disabled]="qaIndex == 0">Back</button>
+            <button mat-raised-button (click)="next()" [disabled]="qaIndex == qaCount()">Next</button>
+        </mat-card-actions>
+    </mat-card-subtitle>
 </mat-card>
 <!-- <div class="box box-default box-code">
     <code>
