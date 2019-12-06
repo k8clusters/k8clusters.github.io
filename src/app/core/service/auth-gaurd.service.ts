@@ -11,11 +11,7 @@ export class AuthGaurdService implements CanActivate {
   constructor(private authService: AuthService, private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    // if (this.authService.isAuthenticated()) {
-    //   return true;
-    // }
-    this.authService.login();
-    return false;
+    return this.authService.isAuthenticated();
   }
 
 }
