@@ -10,21 +10,11 @@ import { FormsModule } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  username = ''
-  password = ''
-  invalidLogin = false
-
   constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
   }
 
   checkLogin() {
-    if (this.authService.authenticate(this.username, this.password)
-    ) {
-      this.router.navigate([''])
-      this.invalidLogin = false
-    } else
-      this.invalidLogin = true
   }
 }

@@ -54,7 +54,7 @@ export class QaTestService {
 
   getQaTestFromService = (qaCount: number = 10) => {
     let header = new HttpHeaders();
-    header = header.set('Authorization', this.authService.getJwt());
+    //header = header.set('Authorization', this.authService.getJwt());
     return this.httpClient.get<QA[]>(`${this.qaServiceUrl}/qaList/${this.qaCount}`, {
       headers: header
     });

@@ -9,7 +9,11 @@ export const environment = {
     host: 'local.k8cluster.io',
     basePath: 'api',
     defaultJwt: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE1Njg0NDMwMzUsImV4cCI6MTU5OTk3OTAzNSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkFtaXQiLCJTdXJuYW1lIjoiS3NoaXJzYWdhciIsIkVtYWlsIjoiYW1pdC5rc2hpcnNhZ2FyLjEzQGdtYWlsLmNvbSIsIlJvbGUiOlsiQWRtaW4iLCJDRU8iXX0.kGTAnKis7k30Y4K6tvDor7Y6tRkfzQaunlMIoVzC8gc'
-  }
+  },
+  authDomain: 'k8cluster.auth0.com',
+  authAudience: 'http://k8clusters.local.k8cluster.io',
+  clientId: 'UmR78TRzZkW9DtQcv3Nikq2ZMe6dHcl0',
+  authService: 'authservice'
 };
 
 /*
