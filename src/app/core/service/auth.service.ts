@@ -51,9 +51,7 @@ export class AuthService {
 
   isAuthenticated() {
     let tokenExists = !isNullOrUndefined(this.getAccessToken());
-    let user = sessionStorage.getItem('username');
-    console.log(!(user === null))
-    return !(user === null);
+    return tokenExists;
   }
 
   public handleAuthentication() {
@@ -68,7 +66,8 @@ export class AuthService {
         this.httpClient.get(`${this.authTokenUrl}?code=${grantCode}`, {
           headers: header
         }).subscribe(data => {
-          sessionStorage.setItem('username', JSON.stringify(data));
+          sessionStorage.setItem(this.ACCESS_TOKEN_PREFIX, data['accessToken']);
+          this.accessToken = data['accessToken'];
           console.log(JSON.stringify(data));
         });
       }
@@ -80,6 +79,9 @@ export class AuthService {
   //------------------------------------------------------------*/
   getAccessToken() {
     return this.accessToken;
+  }
+  setAccessToken(token) {
+    this.accessToken = token;
   }
 
   getSessionId() {
