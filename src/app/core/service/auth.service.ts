@@ -41,7 +41,9 @@ export class AuthService {
 
   login(redirectPath: string = '/') {
     this.logoutBusy = false;
-    this.auth0.authorize(this.properties);
+    if (!this.accessTokenStarted) {
+      this.auth0.authorize(this.properties);
+    }
   }
 
   servicePort: number = 2001;
@@ -57,11 +59,11 @@ export class AuthService {
   public handleAuthentication() {
     return Observable.create(observer => {
       // Call when app reloads after user logs in with Auth0
-      this.accessTokenStarted = true;
       let url: URL = new URL(window.location.href);
       let grantCode: string = (url.searchParams.get('code'));
       let state: string = (url.searchParams.get('state'));
       if (grantCode && state) {
+        this.accessTokenStarted = true;
         let header = new HttpHeaders();
         this.httpClient.get(`${this.authTokenUrl}?code=${grantCode}`, {
           headers: header

@@ -15,7 +15,6 @@ export class QaTestService {
   qaServiceUrl: string = `${environment.backend.protocol}${this.serviceName}.${environment.backend.host}:${this.servicePort}/${environment.backend.basePath}`;
 
   constructor(private qaTestSampleGenService: QaTestSampleGenService, private authService: AuthService, private httpClient: HttpClient) {
-    console.log('QaTestService');
     this.qaTest = this.qaTestSampleGenService.getQaTest(10);
     this.getQaTestFromService(5).subscribe(data => {
       this.qaTest = data;
