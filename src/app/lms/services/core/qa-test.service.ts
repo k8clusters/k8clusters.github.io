@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/core/service/auth.service';
   providedIn: 'root'
 })
 export class QaTestService {
-  serviceName: string = 'k8s-qaservice';
+  serviceName: string = 'qaservice';
   servicePort: number = 2002;
   qaCount: number = 10;
   qaServiceUrl: string = `${environment.backend.protocol}${this.serviceName}.${environment.backend.host}:${this.servicePort}/${environment.backend.basePath}`;
