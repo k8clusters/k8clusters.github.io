@@ -47,7 +47,7 @@ export class AuthService {
   }
 
   servicePort: number = 2001;
-  authorizationUrl: string = `${environment.backend.protocol}${environment.authService}.${environment.backend.host}:${this.servicePort}/authorization`
+  authorizationUrl: string = `/authApi/authorization`
   authTokenUrl: string = `${this.authorizationUrl}/authToken`;
 
 
