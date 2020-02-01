@@ -2,10 +2,19 @@
   "/authApi/*": {
     "target": "http://localhost:2001",
     "secure": false,
-    "logLevel": "debug",
+    "logLevel": "warn",
     "changeOrigin": true,
     "pathRewrite": {
       "^/authApi": ""
+    }
+  },
+  "/qaApi/*": {
+    "target": "http://localhost:2002",
+    "secure": false,
+    "logLevel": "warn",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/qaApi": ""
     }
   }
 }

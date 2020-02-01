@@ -12,7 +12,7 @@ export class QaTestService {
   serviceName: string = 'qaservice';
   servicePort: number = 2002;
   qaCount: number = 10;
-  qaServiceUrl: string = `${environment.backend.protocol}${this.serviceName}.${environment.backend.host}:${this.servicePort}/${environment.backend.basePath}`;
+  qaServiceUrl: string = `/qaApi/${environment.backend.basePath}`;
 
   constructor(private qaTestSampleGenService: QaTestSampleGenService, private authService: AuthService, private httpClient: HttpClient) {
     this.qaTest = this.qaTestSampleGenService.getQaTest(10);
