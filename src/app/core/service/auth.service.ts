@@ -70,7 +70,7 @@ export class AuthService {
         }).subscribe(data => {
           sessionStorage.setItem(this.ACCESS_TOKEN_PREFIX, data['accessToken']);
           this.accessToken = data['accessToken'];
-          console.log(JSON.stringify(data));
+          console.log(data['accessToken']);
         });
       }
     })
