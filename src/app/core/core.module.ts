@@ -4,11 +4,12 @@ import { LoginComponent } from './components/login/login.component';
 import { MatCardModule, MatButtonModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { UserComponent } from './components/user/user.component';
 
 
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, UserComponent],
   imports: [
     CommonModule,
     FormsModule,
