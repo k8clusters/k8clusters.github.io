@@ -19,6 +19,9 @@
       "dom"
     ]
   },
+  "include": [
+    "node_modules/@amitkshirsagar13"
+  ],
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
