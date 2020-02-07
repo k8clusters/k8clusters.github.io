@@ -17,6 +17,8 @@ import { HomeComponent } from './components/home/home.component';
 import { LmsModule } from './lms/lms.module';
 import { MatCardModule } from '@angular/material/card';
 import { CoreModule } from './core/core.module';
+import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, 
+  MatSortModule, MatTableModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,12 @@ import { CoreModule } from './core/core.module';
     MatListModule,
     MatSidenavModule,
     MatToolbarModule,
+    MatTableModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
     BrowserAnimationsModule,
     LmsModule,
     CoreModule

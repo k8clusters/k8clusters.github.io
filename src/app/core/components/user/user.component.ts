@@ -6,12 +6,12 @@ import { User, UserServiceService} from '@amitkshirsagar13/user-auth-service';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  private users:User[];
+  displayedColumns: string[] = ['id', 'userName', 'firstName', 'lastName'];
+  dataSource:User[];
   constructor(private userService: UserServiceService) { 
 
     userService.listUsers(null, false).subscribe(userList=>{
-      this.users = userList;
+      this.dataSource = userList;
     });
   }
 
