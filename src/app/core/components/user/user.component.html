@@ -1,12 +1,4 @@
-<mat-table class="mat-elevation-z8" [dataSource]="dataSource">
+<mat-table #table class="mat-elevation-z8" [dataSource]="dataSource">
   
-  <ng-container matColumnDef="userName">
-      <div *matHeaderCellDef>#</div>
-      <div *matCellDef="let user">{{user.userName}}</div>
-  </ng-container>
-  
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  
-  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 
 </mat-table>

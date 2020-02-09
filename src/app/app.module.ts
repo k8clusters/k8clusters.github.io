@@ -18,7 +18,7 @@ import { LmsModule } from './lms/lms.module';
 import { MatCardModule } from '@angular/material/card';
 import { CoreModule } from './core/core.module';
 import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, 
-  MatSortModule, MatTableModule } from '@angular/material';
+  MatSortModule, MatTableModule, MatTableDataSource } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,6 @@ import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
     MatListModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatTableModule,
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
