@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { Router, ActivatedRoute } from '@angular/router';
-import { from, of, Observable, BehaviorSubject, combineLatest, throwError } from 'rxjs';
-import { tap, catchError, concatMap, shareReplay } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Observable} from 'rxjs';
 import { isNullOrUndefined } from 'util';
-import { environment } from 'src/environments/environment';
 import * as auth0 from 'auth0-js';
-import { JwtHelperService } from "@auth0/angular-jwt";
+import { Configuration } from '@amitkshirsagar13/user-auth-service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +19,9 @@ export class AuthService {
   private readonly CONNECTION_PREFIX = 'sub';
   private readonly LAST_ACTIVITY_PREFIX = 'last_act';
   private readonly CHAT_TOKEN_PREFIX = 'chat_token';
+  private configuration: Configuration = new Configuration();
 
-  constructor(private router: Router,
-    private httpClient: HttpClient
-  ) {
+  constructor(private router: Router, private httpClient: HttpClient) {
   }
 
   auth0 = new auth0.WebAuth({
@@ -70,6 +68,7 @@ export class AuthService {
         }).subscribe(data => {
           sessionStorage.setItem(this.ACCESS_TOKEN_PREFIX, data['accessToken']);
           this.accessToken = data['accessToken'];
+          this.configuration.apiKeys = {['Authorization']:this.getAccessToken()}
           console.log('accessToken: ' + data['accessToken']);
           console.log('userName: ' + data['userName']);
         });
@@ -85,6 +84,10 @@ export class AuthService {
   }
   setAccessToken(token) {
     this.accessToken = token;
+  }
+
+  getConfiguration() {
+    return this.configuration;
   }
 
   getSessionId() {
