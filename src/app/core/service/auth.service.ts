@@ -5,7 +5,7 @@ import { Observable} from 'rxjs';
 import { isNullOrUndefined } from 'util';
 import * as auth0 from 'auth0-js';
 import { Configuration } from '@amitkshirsagar13/user-auth-service';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'

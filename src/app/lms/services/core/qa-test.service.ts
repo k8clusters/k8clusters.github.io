@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { QaTestSampleGenService } from '../mock/qa-test-sample-gen.service';
-import { QA } from 'src/app/shared/typings/model/qA';
+import { QA } from '../../../shared/typings/model/qA';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from 'src/environments/environment'
-import { AuthService } from 'src/app/core/service/auth.service';
+import { environment } from '../../../../environments/environment'
+import { AuthService } from '../../../core/service/auth.service';
 @Injectable({
   providedIn: 'root'
 })

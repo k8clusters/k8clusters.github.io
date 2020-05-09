@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { QuestionType } from 'src/app/shared/typings/model/questionType';
-import { QA } from 'src/app/shared/typings/model/qA';
-import { Choice } from 'src/app/shared/typings/model/choice';
+import { QuestionType } from '../../../shared/typings/model/questionType';
+import { QA } from '../../../shared/typings/model/qA';
+import { Choice } from '../../../shared/typings/model/choice';
 import { QaTestService } from '../../services/core/qa-test.service';
 
 @Component({

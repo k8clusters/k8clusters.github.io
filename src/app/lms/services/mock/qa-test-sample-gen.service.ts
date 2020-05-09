@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { QA } from 'src/app/shared/typings/model/qA';
-import { QuestionType } from 'src/app/shared/typings/model/questionType';
-import { Answer } from 'src/app/shared/typings/model/answer';
+import { QA } from '../../../shared/typings/model/qA';
+import { QuestionType } from '../../../shared/typings/model/questionType';
+import { Answer } from '../../../shared/typings/model/answer';
 
 @Injectable({
   providedIn: 'root'
