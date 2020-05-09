@@ -1,14 +1,27 @@
+.dark {
+	padding: 1rem 1.5rem;
+    color: #000000;
+}
+
 textarea {
 	font-family: monospace;
+	background-color: lightgray;
+}
+
+input {
+	font-family: monospace;
+	background-color: lightgray;
 }
 
 form {
 	padding: 1em 1.5em;
+    color: #000000;
 }
 
 form label {
 	display: block;
-	font-weight: bold;
+    font-weight: bold;
+    color: #000000;
 }
 
 form input {

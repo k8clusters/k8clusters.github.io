@@ -4,7 +4,8 @@ import { ChangeEvent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
 import {
 	Component,
 	ViewChild,
-	AfterViewInit
+	AfterViewInit,
+	ViewEncapsulation
 } from '@angular/core';
 
 import { NgForm } from '@angular/forms';
@@ -15,7 +16,8 @@ const ClassicEditor = DecoupledEditor;
 @Component({
   selector: 'app-wysiwyg-editor',
   templateUrl: './wysiwyg-editor.component.html',
-  styleUrls: ['./wysiwyg-editor.component.scss']
+  styleUrls: ['./wysiwyg-editor.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class WysiwygEditorComponent implements AfterViewInit {
 	@ViewChild( 'demoForm', { static: true } ) public demoForm?: NgForm;
