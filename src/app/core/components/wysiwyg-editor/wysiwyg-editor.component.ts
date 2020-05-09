@@ -17,7 +17,7 @@ const ClassicEditor = DecoupledEditor;
   selector: 'app-wysiwyg-editor',
   templateUrl: './wysiwyg-editor.component.html',
   styleUrls: ['./wysiwyg-editor.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class WysiwygEditorComponent implements AfterViewInit {
 	@ViewChild( 'demoForm', { static: true } ) public demoForm?: NgForm;

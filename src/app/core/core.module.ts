@@ -7,11 +7,15 @@ import { FormsModule } from '@angular/forms';
 import { UserComponent } from './components/user/user.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { WysiwygEditorComponent } from './components/wysiwyg-editor/wysiwyg-editor.component';
-
+import { PrettyjsonPipe } from './pipes/prettyjson.pipe';
 
 
 @NgModule({
-  declarations: [LoginComponent, UserComponent, WysiwygEditorComponent],
+  declarations: [
+    LoginComponent, 
+    UserComponent, 
+    WysiwygEditorComponent,
+    PrettyjsonPipe],
   imports: [
     CommonModule,
     FormsModule,
@@ -20,6 +24,11 @@ import { WysiwygEditorComponent } from './components/wysiwyg-editor/wysiwyg-edit
     MatTableModule,
     RouterModule,
     CKEditorModule
+  ],
+  providers: [
+  ],
+  exports: [
+    PrettyjsonPipe
   ]
 })
 export class CoreModule { 

@@ -18,14 +18,15 @@ import { LmsModule } from './lms/lms.module';
 import { MatCardModule } from '@angular/material/card';
 import { CoreModule } from './core/core.module';
 import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, 
-  MatSortModule, MatTableModule, MatTableDataSource } from '@angular/material';
+  MatSortModule, MatTableModule } from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainNavComponent,
     AboutComponent,
-    HomeComponent
+    HomeComponent,
+    
   ],
   imports: [
     AppRoutingModule,
