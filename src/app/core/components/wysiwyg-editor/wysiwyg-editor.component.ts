@@ -1,6 +1,15 @@
-import { Component, OnInit } from '@angular/core';
 import * as DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 import { ChangeEvent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
+
+import {
+	Component,
+	ViewChild,
+	AfterViewInit
+} from '@angular/core';
+
+import { NgForm } from '@angular/forms';
+
+const ClassicEditor = DecoupledEditor;
 
 
 @Component({
@@ -8,25 +17,40 @@ import { ChangeEvent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
   templateUrl: './wysiwyg-editor.component.html',
   styleUrls: ['./wysiwyg-editor.component.scss']
 })
-export class WysiwygEditorComponent implements OnInit {
+export class WysiwygEditorComponent implements AfterViewInit {
+	@ViewChild( 'demoForm', { static: true } ) public demoForm?: NgForm;
 
-  constructor() {
-   }
+	public Editor = ClassicEditor;
+	public model = {
+		name: 'John',
+		surname: 'Doe',
+		description: '<p>A <b>really</b> nice fellow.</p>'
+	};
 
-  ngOnInit() {
-  }
+    public onReady( editor ) {
+        editor.ui.getEditableElement().parentElement.insertBefore(
+            editor.ui.view.toolbar.element,
+            editor.ui.getEditableElement()
+        );
+      }
+      
+	public formDataPreview?: string;
 
-  public Editor = DecoupledEditor;
+	public get description() {
+		return this.demoForm!.controls.description;
+	}
 
-  public onReady( editor ) {
-    editor.ui.getEditableElement().parentElement.insertBefore(
-        editor.ui.view.toolbar.element,
-        editor.ui.getEditableElement()
-    );
-  }
+	public ngAfterViewInit() {
+		this.demoForm!.control.valueChanges.subscribe( values => {
+			this.formDataPreview = JSON.stringify( values );
+		} );
+	}
 
-  public onChange({ editor }: ChangeEvent) {
-    const data = editor.getData();
-    console.log( data );
-  }
+	public onSubmit() {
+		console.log( 'Form submit, model', this.model );
+	}
+
+	public reset() {
+		this.demoForm!.reset();
+	}
 }
