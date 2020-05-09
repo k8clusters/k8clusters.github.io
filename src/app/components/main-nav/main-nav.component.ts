@@ -21,6 +21,7 @@ export class MainNavComponent {
 
   public divisions: any = [
     { 'grade': '4th', 'route': 'qa' },
-    { 'grade': '5th', 'route': 'qaTest' }
+    { 'grade': '5th', 'route': 'qaTest' },
+    { 'grade': 'CkEditor5', 'route': 'ckEditor5' }
   ];
 }

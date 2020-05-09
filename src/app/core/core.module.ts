@@ -5,11 +5,13 @@ import { MatCardModule, MatButtonModule, MatTableModule } from '@angular/materia
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { UserComponent } from './components/user/user.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { WysiwygEditorComponent } from './components/wysiwyg-editor/wysiwyg-editor.component';
 
 
 
 @NgModule({
-  declarations: [LoginComponent, UserComponent],
+  declarations: [LoginComponent, UserComponent, WysiwygEditorComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -17,6 +19,9 @@ import { UserComponent } from './components/user/user.component';
     MatCardModule,
     MatTableModule,
     RouterModule,
+    CKEditorModule
   ]
 })
-export class CoreModule { }
+export class CoreModule { 
+  
+}
