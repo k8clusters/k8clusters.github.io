@@ -24,9 +24,15 @@ export class WysiwygEditorComponent implements AfterViewInit {
 
 	public Editor = ClassicEditor;
 	public model = {
-		name: 'John',
-		surname: 'Doe',
-		description: '<p>A <b>really</b> nice fellow.</p>'
+		revealed: false,
+		maxSelection: 1,
+		selectionCounter: 0,
+		point: 0,
+		submitted: false,
+		validated: false,
+		qType: 'MULTTYPE',
+		_class: 'io.k8clusters.qa.dto.QA',
+		question: '<p>A <b>really</b> nice fellow.</p>'
 	};
 
     public onReady( editor ) {
