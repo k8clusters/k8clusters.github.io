@@ -17,9 +17,10 @@ export class TextInputComponent implements OnInit {
   @Input() inputModel: Choice = {
     "index": 1,
     "value": "Some Text",
-    "correct": true,
+    "correct": false,
     "hint": "Some value is rigth because"
   };
+  
   public correctA
   public editorMode: boolean = false;
 
@@ -29,7 +30,6 @@ export class TextInputComponent implements OnInit {
 
   public change(event: MatCheckboxChange) {
     this.inputModel.correct = event.checked;
-    console.log(JSON.stringify(this.inputModel));
   }
 
 }

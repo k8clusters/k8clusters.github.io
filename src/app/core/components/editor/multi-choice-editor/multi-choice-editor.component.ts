@@ -28,7 +28,7 @@ export class MultiChoiceEditorComponent implements OnInit {
     let choice: Choice = {
       "index": -1,
       "value": "Some Text",
-      "correct": true,
+      "correct": false,
       "hint": "Some value is rigth because"
     };
     return choice;

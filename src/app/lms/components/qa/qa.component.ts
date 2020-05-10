@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { QaTestService } from '../../services/core/qa-test.service';
 import { QA, Choice } from '@amitkshirsagar13/qa-server';
+import { QaService } from '../../services/core/qa.service';
 
 @Component({
   selector: 'app-qa',
@@ -9,20 +9,26 @@ import { QA, Choice } from '@amitkshirsagar13/qa-server';
 })
 export class QaComponent implements OnInit {
 
-  constructor(private qaTestService: QaTestService) {
+  constructor(private qaService: QaService) {
   }
 
+  private qaIndex: number = 0;
+
   ngOnInit() {
-    this.qaTestService.currentQaIndex.subscribe(qaIndex => {
+    this.qaService.currentQaIndex.subscribe(qaIndex => {
       this.qaIndex = qaIndex;
-      this.qa = this.qaTestService.getQaTest()[this.qaIndex];
+      this.qaService.listQAs(5).subscribe( data => {
+        this.qa = data[this.qaIndex];
+      });
     });
   }
 
-  private qaIndex: number;
-
-  qType: QA.QTypeEnum = QA.QTypeEnum.MULTTYPE;
+  textType = QA.QTypeEnum.TEXTTYPE;
+  boolType = QA.QTypeEnum.BOOLTYPE;
+  multType = QA.QTypeEnum.MULTTYPE;
+  
   qa: QA;
+
   public onChoiceSelection = (selectionValue: number) => {
     this.qa.selectionCounter = 0;
     if (this.qa.validated) {

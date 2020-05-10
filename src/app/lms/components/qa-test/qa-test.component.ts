@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { QaTestService } from '../../services/core/qa-test.service';
+import { QaService } from '../../services/core/qa.service';
 
 @Component({
   selector: 'app-qa-test',
@@ -8,8 +8,8 @@ import { QaTestService } from '../../services/core/qa-test.service';
 })
 export class QaTestComponent implements OnInit {
 
-  constructor(private qaTestService: QaTestService) {
-    this.qaTestService.currentQaIndex.subscribe(qaIndex => {
+  constructor(private qaService: QaService) {
+    this.qaService.currentQaIndex.subscribe(qaIndex => {
       this.qaIndex = qaIndex;
     });
   }
@@ -20,19 +20,23 @@ export class QaTestComponent implements OnInit {
   public qaIndex: number;
 
   newTest = () => {
-    this.qaTestService.getNewTest();
+    this.qaService.getNewTest();
   }
 
   next = () => {
-    this.qaTestService.nextQaIndex();
+    this.qaService.nextQaIndex();
   }
 
   back = () => {
-    this.qaTestService.backQaIndex();
+    this.qaService.backQaIndex();
   }
 
   qaCount = (): number => {
-    return this.qaTestService.getQaTest().length - 1;
+    let iCount = 1;
+    if (this.qaService.getQaTest()) {
+      iCount = this.qaService.getQaTest().length;
+    }
+    return iCount - 1;
   }
 
 }

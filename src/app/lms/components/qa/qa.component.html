@@ -5,16 +5,16 @@
             <mat-card-subtitle>Select any {{qa.maxSelection}} from below choices!!!</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-            <p>{{qa.question}}</p>
+            <div [innerHTML]="qa.question"></div>
             <p>Choices {{qa.selectionCounter}}/{{qa.maxSelection}}</p>
             <div [ngSwitch]="qa.qType">
-                <div *ngSwitchCase="qType.TextType">
+                <div *ngSwitchCase="textType">
                     <input type="text" />
                 </div>
-                <div *ngSwitchCase="qType.BoolType">
+                <div *ngSwitchCase="boolType">
                     <input type="radio">
                 </div>
-                <div *ngSwitchCase="qType.MultType">
+                <div *ngSwitchCase="multType">
                     <div *ngFor="let choice of qa.choices">
                         <div class="options">
                             <mat-checkbox value="{{choice.index}}" [disabled]="choice.disabled"
