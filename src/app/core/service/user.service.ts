@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Observable, observable } from 'rxjs';
-import { User, UsersService, Configuration } from '@amitkshirsagar13/user-auth-service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { User, UsersService } from '@amitkshirsagar13/user-auth-service';
 import { AuthService } from './auth.service';
 
 @Injectable({

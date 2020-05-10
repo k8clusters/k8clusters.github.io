@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { QA } from '../../../shared/typings/model/qA';
-import { QuestionType } from '../../../shared/typings/model/questionType';
-import { Answer } from '../../../shared/typings/model/answer';
+import { QA, Choice } from '@amitkshirsagar13/qa-server';
 
 @Injectable({
   providedIn: 'root'
@@ -30,14 +28,14 @@ export class QaTestSampleGenService {
       this.getChoice(3, "Amogh", false, "He is Hero!!!"),
       this.getChoice(4, "Not Sure", true, "Who is it?")
     ],
-    "qType": QuestionType.MultType,
+    "qType": QA.QTypeEnum.MULTTYPE,
     "point": 0,
     "selectionCounter": 0,
     "maxSelection": 2
   }
 
-  public getChoice(pIndex: number, pValue: string, pCorrect: boolean, pHint?: string, pHintVisible?: boolean, pVisible: boolean = true): Answer {
-    let option: Answer = {
+  public getChoice(pIndex: number, pValue: string, pCorrect: boolean, pHint?: string, pHintVisible?: boolean, pVisible: boolean = true): Choice {
+    let option: Choice = {
       "index": pIndex,
       "value": pValue,
       "correct": pCorrect,

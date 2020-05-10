@@ -1,5 +1,4 @@
 import * as DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
-import { ChangeEvent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
 
 import {
 	Component,
@@ -9,8 +8,8 @@ import {
 } from '@angular/core';
 
 import { NgForm } from '@angular/forms';
-import { QA } from '../../../shared/typings/model/qA';
-import { QuestionType } from '../../../shared/typings/model/questionType';
+import { QA } from '@amitkshirsagar13/qa-server';
+import { QaService } from '../../../lms/services/core/qa.service';
 
 const ClassicEditor = DecoupledEditor;
 
@@ -24,6 +23,10 @@ const ClassicEditor = DecoupledEditor;
 export class WysiwygEditorComponent implements AfterViewInit {
 	@ViewChild( 'demoForm', { static: true } ) public demoForm?: NgForm;
 
+	constructor(private qaService: QaService) {
+
+	}
+
 	public Editor = ClassicEditor;
 	public qa: QA = {
 		revealed: false,
@@ -33,7 +36,7 @@ export class WysiwygEditorComponent implements AfterViewInit {
 		point: 0,
 		submitted: false,
 		validated: false,
-		qType: QuestionType.MultType,
+		qType: QA.QTypeEnum.MULTTYPE,
 		question: '<p>A <b>really</b> nice fellow.</p>'
 	};
 
@@ -57,7 +60,11 @@ export class WysiwygEditorComponent implements AfterViewInit {
 	}
 
 	public onSubmit() {
-		console.log( this.qa );
+		console.log( JSON.stringify(this.qa) );
+		this.qaService.postQA(this.qa).subscribe(data => {
+			this.qa = data;
+		});
+		console.log( JSON.stringify(this.qa) );
 	}
 
 	public reset() {

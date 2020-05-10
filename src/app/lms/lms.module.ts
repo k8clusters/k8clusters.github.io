@@ -9,6 +9,7 @@ import { QaTestService } from './services/core/qa-test.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material'
+import { QaService } from './services/core/qa.service';
 
 
 
@@ -25,6 +26,6 @@ import { MatGridListModule } from '@angular/material'
     HttpClientModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [QaTestService]
+  providers: [QaTestService, QaService]
 })
 export class LmsModule { }

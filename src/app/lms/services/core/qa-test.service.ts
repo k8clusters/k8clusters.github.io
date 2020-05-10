@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { QaTestSampleGenService } from '../mock/qa-test-sample-gen.service';
-import { QA } from '../../../shared/typings/model/qA';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../../environments/environment'
 import { AuthService } from '../../../core/service/auth.service';
+import { QA } from '@amitkshirsagar13/qa-server';
+import { QaService } from './qa.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,10 +14,11 @@ export class QaTestService {
   serviceName: string = 'qaservice';
   servicePort: number = 2002;
   qaCount: number = 10;
-  qaServiceUrl: string = `/qaApi/${environment.backend.basePath}`;
 
-  constructor(private qaTestSampleGenService: QaTestSampleGenService, private authService: AuthService, private httpClient: HttpClient) {
-    this.qaTest = this.qaTestSampleGenService.getQaTest(10);
+  constructor(private qaService: QaService, private authService: AuthService, private httpClient: HttpClient) {
+    this.qaService.listQAs().subscribe(data => {
+      this.qaTest = data;
+    });
     this.getQaTestFromService(5).subscribe(data => {
       this.qaTest = data;
     });
@@ -54,8 +57,6 @@ export class QaTestService {
   getQaTestFromService = (qaCount: number = 10) => {
     let header = new HttpHeaders();
     header = header.set('Authorization', this.authService.getAccessToken());
-    return this.httpClient.get<QA[]>(`${this.qaServiceUrl}/qaList/${this.qaCount}`, {
-      headers: header
-    });
+    return this.qaService.listQAs();
   }
 }

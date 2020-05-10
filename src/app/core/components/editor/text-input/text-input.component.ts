@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material';
-import { Choice } from '../../../../shared/typings/model/choice';
+import { Choice } from '@amitkshirsagar13/qa-server';
 
 @Component({
   selector: 'app-text-input',

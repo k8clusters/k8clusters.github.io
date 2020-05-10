@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { QuestionType } from '../../../shared/typings/model/questionType';
-import { QA } from '../../../shared/typings/model/qA';
-import { Choice } from '../../../shared/typings/model/choice';
 import { QaTestService } from '../../services/core/qa-test.service';
+import { QA, Choice } from '@amitkshirsagar13/qa-server';
 
 @Component({
   selector: 'app-qa',
@@ -23,7 +21,7 @@ export class QaComponent implements OnInit {
 
   private qaIndex: number;
 
-  qType = QuestionType;
+  qType: QA.QTypeEnum = QA.QTypeEnum.MULTTYPE;
   qa: QA;
   public onChoiceSelection = (selectionValue: number) => {
     this.qa.selectionCounter = 0;

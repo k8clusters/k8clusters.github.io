@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Choice } from '../../../../shared/typings/model/choice';
+
+import { Choice } from '@amitkshirsagar13/qa-server';
 
 @Component({
   selector: 'app-multi-choice-editor',
