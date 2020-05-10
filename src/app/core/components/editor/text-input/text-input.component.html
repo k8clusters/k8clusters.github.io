@@ -1,0 +1,16 @@
+<div>
+    <div *ngIf="editorMode">
+        <input [(ngModel)]="inputModel.value" (focusout)="toggleEditor()" (keyup.enter)="toggleEditor()">
+        <br/>
+        <input [(ngModel)]="inputModel.hint" (focusout)="toggleEditor()" (keyup.enter)="toggleEditor()">
+    </div>
+    <div *ngIf="!editorMode">
+        <p (dblclick)="toggleEditor()">Answer: {{inputModel.value}}</p>
+        <p (dblclick)="toggleEditor()">Hint: {{inputModel.hint}}</p>
+    </div>
+    <div>
+        <mat-checkbox [checked]="inputModel.checked" [ngModelOptions]="{standalone: true}"
+            (change)="change($event)">
+        </mat-checkbox>
+    </div>
+</div>

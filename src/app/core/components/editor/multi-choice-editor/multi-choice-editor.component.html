@@ -1,0 +1,8 @@
+<div>
+    <hr>
+    <button mat-raised-button (click)="addNewChoice()">Add New Choice</button>
+    <div *ngFor="let choice of choices">
+        <app-text-input [(inputModel)]="choice"></app-text-input>
+    </div>
+    <hr>
+</div>

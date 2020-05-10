@@ -1,39 +1,45 @@
 <h2 class="dark">Integration with forms (<code>ngModel</code>)</h2>
 
+
 <form (ngSubmit)="onSubmit()" #demoForm="ngForm" class="dark">
 	<h3>User profile form</h3>
 
+	<p *ngIf="question && question.dirty" class="alert">Question is "dirty".</p>
+	<p *ngIf="question && question.touched" class="alert">Question has been "touched".</p>
+
 	<div>
 		<label for="qType">qType</label>
-		<input [(ngModel)]="model.qType" type="text" name="qType" id="qType">
+		<input [(ngModel)]="qa.qType" type="text" name="qType" id="qType">
 	</div>
 
 	<div>
-		<label for="_class">_class</label>
-		<input [(ngModel)]="model._class" type="text" name="_class" id="_class">
+		<label for="maxSelection">maxSelection</label>
+		<input [(ngModel)]="qa.maxSelection" type="text" name="maxSelection" id="maxSelection">
 	</div>
 
 	<label for="question">Question</label>
 	<ckeditor
-		[(ngModel)]="model.question"
+		[(ngModel)]="qa.question"
 		[editor]="Editor"
 		id="question"
 		name="question" (ready)="onReady($event)">
 	</ckeditor>
 
-	<p *ngIf="question && question.dirty" class="alert">Question is "dirty".</p>
-	<p *ngIf="question && question.touched" class="alert">Question has been "touched".</p>
+	<div>
+		<app-multi-choice-editor [(choices)]="qa.choices"></app-multi-choice-editor>
+	</div>
 
-	<p><button type="reset" (click)="reset()">Reset form</button></p>
-	<p><button type="submit">Submit this form</button> <em>(Open the console first)</em></p>
+	<p><button mat-raised-button type="reset" (click)="reset()">Reset form</button></p>
+	<p><button mat-raised-button type="submit">Submit this form</button> <em>(Open the console first)</em></p>
 </form>
+
 
 <h3 class="dark">Editor data preview (readable and writable)</h3>
 <p class="dark">
 	Note that it's only a prove of concept of using the `ngModel`.
 	It allows editing, but the editor instantly strips out unknown tags and autoparagraphs text outside of block elements.
 </p>
-<textarea [(ngModel)]="model.question" style="width: 100%; height: 40px"></textarea>
+<textarea [(ngModel)]="qa.question" style="width: 100%; height: 40px"></textarea>
 
 <h3 class="dark">Form data preview</h3>
 <pre><code>{{formDataPreview}}</code></pre>

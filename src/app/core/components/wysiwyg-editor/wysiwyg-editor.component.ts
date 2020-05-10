@@ -9,6 +9,8 @@ import {
 } from '@angular/core';
 
 import { NgForm } from '@angular/forms';
+import { QA } from '../../../shared/typings/model/qA';
+import { QuestionType } from '../../../shared/typings/model/questionType';
 
 const ClassicEditor = DecoupledEditor;
 
@@ -23,15 +25,15 @@ export class WysiwygEditorComponent implements AfterViewInit {
 	@ViewChild( 'demoForm', { static: true } ) public demoForm?: NgForm;
 
 	public Editor = ClassicEditor;
-	public model = {
+	public qa: QA = {
 		revealed: false,
 		maxSelection: 1,
+		choices:[],
 		selectionCounter: 0,
 		point: 0,
 		submitted: false,
 		validated: false,
-		qType: 'MULTTYPE',
-		_class: 'io.k8clusters.qa.dto.QA',
+		qType: QuestionType.MultType,
 		question: '<p>A <b>really</b> nice fellow.</p>'
 	};
 
@@ -55,7 +57,7 @@ export class WysiwygEditorComponent implements AfterViewInit {
 	}
 
 	public onSubmit() {
-		console.log( 'Form submit, model', this.model );
+		console.log( this.qa );
 	}
 
 	public reset() {
