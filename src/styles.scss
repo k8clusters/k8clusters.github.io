@@ -8,44 +8,24 @@ body {
 }
 
 body {
-    background: #2e9ce6;
+    background: #f2f2f2;
     font-family: 'Raleway','Arial';
-    color: #fff;
     margin: auto;
 }
 
-
-.mat-toolbar {
-    display: inline;
+.mat-toolbar-side-nav {
     text-transform: uppercase;
     margin: 2px 2px 2px 2px;
     padding: 5px 20px 5px 20px;
     font-weight: bolder;
-    color: black;
-    border-radius: 4px;
-}
-
-.sidenav {
-  width: 200px;
-  background-color: #3fa0e1;
-  box-shadow: 3px 0 6px rgba(0,0,0,.24);
-}
-
-.rainbow-text {
-    font-size: 25px;
-    background-image: linear-gradient(to left, violet, yellow, orange, red);
-    background-clip: content-box;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background-color: #3d577a;
+    border-radius: 2px;
 }
 
 .root-container {
     display: inherit;
     grid-template-columns: 100% auto;
-    padding: 10px 10px 10px 10px;
-    max-width: 100%;
-    color: #fff;
-    margin: 0px 10px 10px 30px;
+    padding: 1rem;
 }
 
 .container {
@@ -67,28 +47,21 @@ body {
 	display: block;
 }
 
-.color-dark {
-    background: #2885c4;
+.table-header-color-dark {
+    background: #adadad;
     font-weight: bold;
     color:  #0f202c;
     max-width: 100%;
 }
 
-.color-light {
-    background: #57B3f1;
+.sidenav-content-container {
+    background: #fafafa;
     max-width: 100%
 }
 
 .col {
     border: 2px solid #150072;
     padding: .4em 1.3em;
-}
-
-.life-container {
-    background: #3fa0e1;
-    padding: .5em;
-    font-weight: bold;
-    cursor: pointer;
 }
 
 .options {
@@ -141,16 +114,6 @@ body {
 
 .box-code {
     border-style: dashed; 
-}
-
-.nav-color-dark {
-    background: #2885c4;
-    font-weight: bold;
-    color:  #0f202c;
-}
-
-.mat-card {
-   background: #60c0ff;
 }
 
 .mat-card-title {

@@ -1,33 +1,37 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport="false"
+  <mat-sidenav #drawer fixedInViewport="false"
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>
-      <mat-card class="title-color-dark">K8Clusters</mat-card>
-    </mat-toolbar>
-    <mat-nav-list class='menu'>
-      <a mat-list-item href="#" routerLink="">Home</a>
-      <a mat-list-item href="#" routerLink="users">Users</a>
-      <a mat-list-item href="#" routerLink="about">About</a>
-      <mat-divider></mat-divider>
-      <a mat-list-item>Division</a>
-      <mat-list-item *ngFor="let division of divisions">
-        <a mat-list-item href="#" routerLink="{{division.route}}">{{division.grade}}</a>
-      </mat-list-item>
-    </mat-nav-list>
+    <div class="sidenav-inner-container">
+      <mat-toolbar class="mat-toolbar-side-nav">
+        <div class="sidenav-menu-title">K8Clusters</div>
+      </mat-toolbar>
+      <mat-nav-list class='menu'>
+        <a mat-list-item href="#" routerLink="">Home</a>
+        <a mat-list-item href="#" routerLink="users">Users</a>
+        <a mat-list-item href="#" routerLink="about">About</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item>Division</a>
+        <mat-list-item *ngFor="let division of divisions">
+          <a mat-list-item href="#" routerLink="{{division.route}}">{{division.grade}}</a>
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
   </mat-sidenav>
   <mat-sidenav-content class="color-light">
-    <mat-toolbar color="primary" class="title-color-dark">
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon"><img src="assets/images/nav/nav-24px.svg" alt="Menu" /></mat-icon>
-      </button>
-      <mat-card class="title-color-dark">
-        K8Clusters Learning Management System
-      </mat-card>
-    </mat-toolbar>
-    <div class='root-container'>
-      <router-outlet></router-outlet>
+    <div class="sidenav-content-container">
+      <mat-toolbar>
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon"><img src="assets/images/nav/nav-24px.svg" alt="Menu" /></mat-icon>
+        </button>
+        <mat-card class="content-title-color">
+          K8Clusters Test Module
+        </mat-card>
+      </mat-toolbar>
+      <div class='root-container'>
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
