@@ -16,11 +16,13 @@
 		<div>
 			<app-multi-choice-editor [(choices)]="qa.choices" [(qType)]="qa.qType" [(maxSelection)]="qa.maxSelection"></app-multi-choice-editor>
 		</div>
-		<div class="empty-div-inline" style="display: inline;" >
-			<button mat-raised-button type="reset" (click)="reset()">Reset Question</button>
-		</div>
-		<div class="empty-div" style="display: inline;" >
-			<button mat-raised-button type="submit">Add Question</button>
+		<div>
+			<div class="empty-div-inline" style="display: inline;">
+				<button mat-raised-button type="reset" (click)="reset()">Reset Question</button>
+			</div>
+			<div class="empty-div" style="display: inline; margin-left: 1rem;">
+				<button mat-raised-button type="submit">Add Question</button>
+			</div>
 		</div>
 	</form>
 </mat-card>
