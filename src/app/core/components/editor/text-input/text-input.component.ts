@@ -14,15 +14,10 @@ export class TextInputComponent implements OnInit {
   ngOnInit() {
   }
 
-  @Input() inputModel: Choice = {
-    "index": 1,
-    "value": "Some Text",
-    "correct": false,
-    "hint": "Some value is rigth because"
-  };
+  @Input() inputModel: Choice;
   
   public correctA
-  public editorMode: boolean = false;
+  public editorMode: boolean = true;
 
   public toggleEditor() {
     this.editorMode = !this.editorMode;

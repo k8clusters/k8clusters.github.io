@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Choice } from '@amitkshirsagar13/qa-server';
+import { Choice, QA } from '@amitkshirsagar13/qa-server';
 
 @Component({
   selector: 'app-multi-choice-editor',
@@ -16,6 +16,7 @@ export class MultiChoiceEditorComponent implements OnInit {
   }
 
   @Input() choices: Choice[] = [];
+  @Input() qType: QA.QTypeEnum;
 
   public addNewChoice() {
     let choice: Choice = this.newChoice();
@@ -27,9 +28,9 @@ export class MultiChoiceEditorComponent implements OnInit {
   public newChoice(): Choice {
     let choice: Choice = {
       "index": -1,
-      "value": "Some Text",
+      "value": "",
       "correct": false,
-      "hint": "Some value is rigth because"
+      "hint": ""
     };
     return choice;
   }

@@ -1,16 +1,18 @@
-<div>
-    <div *ngIf="editorMode">
-        <input [(ngModel)]="inputModel.value" (focusout)="toggleEditor()" (keyup.enter)="toggleEditor()">
-        <br/>
-        <input [(ngModel)]="inputModel.hint" (focusout)="toggleEditor()" (keyup.enter)="toggleEditor()">
-    </div>
-    <div *ngIf="!editorMode">
-        <p (dblclick)="toggleEditor()">Answer: {{inputModel.value}}</p>
-        <p (dblclick)="toggleEditor()">Hint: {{inputModel.hint}}</p>
-    </div>
-    <div>
-        <mat-checkbox [checked]="inputModel.checked" [ngModelOptions]="{standalone: true}"
-            (change)="change($event)">
+<div class="choice-input">
+    <div class="vertical-center">
+        <mat-checkbox [checked]="inputModel.checked" [ngModelOptions]="{standalone: true}" (change)="change($event)">
         </mat-checkbox>
     </div>
+    <div class="choice">
+        <div *ngIf="editorMode">
+            <input class="line-input" [(ngModel)]="inputModel.value" (keyup.enter)="toggleEditor()" placeholder="Answer Choice">
+            <br/>
+            <input class="line-input" [(ngModel)]="inputModel.hint" (keyup.enter)="toggleEditor()" placeholder="Hint/Explaination for Choice">
+        </div>
+        <div *ngIf="!editorMode">
+            <p>Answer: {{inputModel.value}}</p>
+            <p>Hint: {{inputModel.hint}}</p>
+        </div>
+    </div>
+    <hr class="dotted">
 </div>

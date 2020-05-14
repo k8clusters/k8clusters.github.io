@@ -1,6 +1,13 @@
 <div>
     <hr>
-    <button mat-raised-button (click)="addNewChoice()">Add New Choice</button>
+    <div>
+        <button mat-raised-button (click)="addNewChoice()">Add New Choice</button>
+        <select class="line-select" [(ngModel)]="qType" type="text" name="qType" id="qType">
+            <option value="MULTTYPE" style="font-weight: bold;">Multiple Choices</option>
+            <option value="BOOLTYPE" style="font-weight: bold;">True/False</option>
+            <option value="TEXTTYPE" style="font-weight: bold;">Text Answer</option>
+        </select>
+    </div>
     <div *ngFor="let choice of choices">
         <app-text-input [(inputModel)]="choice"></app-text-input>
     </div>

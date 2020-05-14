@@ -22,6 +22,10 @@ const ClassicEditor = DecoupledEditor;
 })
 export class WysiwygEditorComponent implements AfterViewInit {
 	@ViewChild( 'demoForm', { static: true } ) public demoForm?: NgForm;
+	
+	public editorConfig = {
+		placeholder: 'Type the content here!',
+	};
 
 	constructor(private qaService: QaService) {
 
@@ -37,7 +41,7 @@ export class WysiwygEditorComponent implements AfterViewInit {
 		submitted: false,
 		validated: false,
 		qType: QA.QTypeEnum.MULTTYPE,
-		question: '<p>A <b>really</b> nice fellow.</p>'
+		question: ""
 	};
 
     public onReady( editor ) {

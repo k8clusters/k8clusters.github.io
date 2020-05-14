@@ -234,3 +234,22 @@ body {
 .align-button-right {
     float: right;
 }
+
+.line-select {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    display: inline;
+    background: #ccc; 
+    color: black; 
+    border-radius:3px; 
+    line-height: 3; 
+    font-weight: bold;
+}
+
+
+.line-input {
+    padding: 0.5rem;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
