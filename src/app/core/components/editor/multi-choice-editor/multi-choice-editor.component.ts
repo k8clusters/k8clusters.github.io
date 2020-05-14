@@ -17,6 +17,7 @@ export class MultiChoiceEditorComponent implements OnInit {
 
   @Input() choices: Choice[] = [];
   @Input() qType: QA.QTypeEnum;
+  @Input() maxSelection: number;
 
   public addNewChoice() {
     let choice: Choice = this.newChoice();
@@ -24,6 +25,19 @@ export class MultiChoiceEditorComponent implements OnInit {
     this.choices.push(choice);
     console.log(JSON.stringify(this.choices));
   }
+
+  public resetChoices() {
+    console.log("Reseting Choices");
+    while (this.choices.length < 2) {
+      this.addNewChoice();
+    }
+    if (this.qType === QA.QTypeEnum.BOOLTYPE && this.qType.length > 2) {
+      this.choices.splice(2);
+    } else if (this.qType === QA.QTypeEnum.TEXTTYPE && this.qType.length > 1) {
+      this.choices.splice(1);
+    }
+  }
+  
 
   public newChoice(): Choice {
     let choice: Choice = {

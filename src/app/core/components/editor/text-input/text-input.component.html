@@ -1,13 +1,17 @@
 <div class="choice-input">
     <div class="vertical-center">
-        <mat-checkbox [checked]="inputModel.checked" [ngModelOptions]="{standalone: true}" (change)="change($event)">
+        <mat-checkbox *ngIf="qType === 'MULTTYPE'" [checked]="inputModel.checked" [ngModelOptions]="{standalone: true}" (change)="change($event)">
         </mat-checkbox>
+        <mat-radio-button *ngIf="qType === 'BOOLTYPE'" [checked]="inputModel.checked" [ngModelOptions]="{standalone: true}" (change)="change($event)"></mat-radio-button>
     </div>
     <div class="choice">
         <div *ngIf="editorMode">
-            <input class="line-input" [(ngModel)]="inputModel.value" (keyup.enter)="toggleEditor()" placeholder="Answer Choice">
-            <br/>
-            <input class="line-input" [(ngModel)]="inputModel.hint" (keyup.enter)="toggleEditor()" placeholder="Hint/Explaination for Choice">
+            <input class="line-input" [(ngModel)]="inputModel.hint" (keyup.enter)="toggleEditor()"
+            placeholder="Hint/Explaination for Choice">
+            <br />
+            <input *ngIf="qType !== 'TEXTTYPE'" class="line-input" [(ngModel)]="inputModel.value" (keyup.enter)="toggleEditor()" placeholder="Answer Choice">
+            <textarea *ngIf="qType === 'TEXTTYPE'" class="line-textarea" [(ngModel)]="inputModel.value" (keyup.enter)="toggleEditor()"
+                placeholder="Detailed Answer for Question!!!"></textarea>
         </div>
         <div *ngIf="!editorMode">
             <p>Answer: {{inputModel.value}}</p>

@@ -14,28 +14,13 @@
 		</div>
 
 		<div>
-			<app-multi-choice-editor [(choices)]="qa.choices" [(qType)]="qa.qType"></app-multi-choice-editor>
+			<app-multi-choice-editor [(choices)]="qa.choices" [(qType)]="qa.qType" [(maxSelection)]="qa.maxSelection"></app-multi-choice-editor>
 		</div>
-
-		
-
-		<div>
-			<label for="maxSelection">maxSelection</label>
-			<input [(ngModel)]="qa.maxSelection" type="text" name="maxSelection" id="maxSelection">
+		<div class="empty-div-inline" style="display: inline;" >
+			<button mat-raised-button type="reset" (click)="reset()">Reset form</button>
 		</div>
-
-		<p><button mat-raised-button type="reset" (click)="reset()">Reset form</button></p>
-		<p><button mat-raised-button type="submit">Submit this form</button> <em>(Open the console first)</em></p>
+		<div class="empty-div" style="display: inline;" >
+			<button mat-raised-button type="submit">Submit this form</button>
+		</div>
 	</form>
-
-
-	<h3 class="dark">Editor data preview (readable and writable)</h3>
-	<p class="dark">
-		Note that it's only a prove of concept of using the `ngModel`.
-		It allows editing, but the editor instantly strips out unknown tags and autoparagraphs text outside of block elements.
-	</p>
-	<textarea [(ngModel)]="qa.question" style="width: 100%; height: 40px"></textarea>
-
-	<h3 class="dark">Form data preview</h3>
-	<pre><code>{{formDataPreview}}</code></pre>
 </mat-card>

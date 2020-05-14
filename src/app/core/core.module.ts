@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './components/login/login.component';
-import { MatCardModule, MatButtonModule, MatTableModule, MatCheckboxModule } from '@angular/material';
+import { MatCardModule, MatButtonModule, MatTableModule, MatCheckboxModule, MatRadioModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { UserComponent } from './components/user/user.component';
@@ -28,6 +28,7 @@ import { MultiChoiceEditorComponent } from './components/editor/multi-choice-edi
     MatCardModule,
     MatTableModule,
     MatCheckboxModule,
+    MatRadioModule,
     RouterModule,
     CKEditorModule
   ],

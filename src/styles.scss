@@ -90,6 +90,12 @@ body {
     padding: 0.1rem;
 }
 
+.empty-div {
+    display: block;
+    padding: 0.1rem;
+    display: inline;
+}
+
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
@@ -192,7 +198,7 @@ body {
     background-color:rgb(35, 36, 39);
 }
 
-.mat-raised-button{
+.mat-raised-button {
     color: rgb(166, 233, 250);
     background-color:black;
 } 
