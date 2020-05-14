@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
-import { MatCheckboxChange } from '@angular/material';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { MatCheckboxChange, MatRadioChange } from '@angular/material';
 import { Choice, QA } from '@amitkshirsagar13/qa-server';
 
 @Component({
@@ -17,16 +17,21 @@ export class TextInputComponent implements OnInit {
   @Input() inputModel: Choice;
   @Input() qType: QA.QTypeEnum;
   @Input() maxSelection: number;
+  @Output() correctAnswerMarked = new EventEmitter();
   
-  public correctA
   public editorMode: boolean = true;
 
   public toggleEditor() {
     this.editorMode = !this.editorMode;
   }
 
-  public change(event: MatCheckboxChange) {
+  public changeCheckBox(event: MatCheckboxChange) {
     this.inputModel.correct = event.checked;
+  }
+
+  public changeRadio(event: MatRadioChange) {
+    this.inputModel.correct = event.source.checked;
+    this.correctAnswerMarked.emit(this.inputModel);
   }
 
 }

@@ -9,7 +9,7 @@
         <input *ngIf="qType === 'MULTTYPE'" style="display: inline; margin: 0.5rem; width: 6rem;" class="line-input" [(ngModel)]="maxSelection" placeholder="Select any #">
     </div>
     <div *ngFor="let choice of choices">
-        <app-text-input [(inputModel)]="choice" [qType]="qType"></app-text-input>
+        <app-text-input [(inputModel)]="choice" [qType]="qType" (correctAnswerMarked)='processAnswer($event)'></app-text-input>
     </div>
     <hr>
 </div>

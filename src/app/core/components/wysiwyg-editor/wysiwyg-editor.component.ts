@@ -25,6 +25,29 @@ export class WysiwygEditorComponent implements AfterViewInit {
 	
 	public editorConfig = {
 		placeholder: 'Type the content here!',
+    toolbar: {
+        items: [
+            'heading',
+            '|',
+            'bold',
+            'italic',
+            'link',
+            'bulletedList',
+            'numberedList',
+            'blockQuote',
+            'undo',
+            'redo'
+        ]
+    },
+    // image: {
+    //     toolbar: [
+    //         'imageStyle:full',
+    //         'imageStyle:side',
+    //         '|',
+    //         'imageTextAlternative'
+    //     ]
+    // },
+    language: 'en'
 	};
 
 	constructor(private qaService: QaService) {

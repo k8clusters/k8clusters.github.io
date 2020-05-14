@@ -35,9 +35,21 @@ export class MultiChoiceEditorComponent implements OnInit {
       this.choices.splice(2);
     } else if (this.qType === QA.QTypeEnum.TEXTTYPE && this.qType.length > 1) {
       this.choices.splice(1);
+      this.choices[0].correct = true;
     }
   }
   
+  public processAnswer(choice: Choice) {
+    if (this.qType === QA.QTypeEnum.BOOLTYPE) {
+      this.choices.forEach(item => {
+        if (choice.index === item.index) {
+          item.correct = choice.correct;
+        } else {
+          item.correct = !choice.correct;
+        }
+      });
+    }
+  }
 
   public newChoice(): Choice {
     let choice: Choice = {
