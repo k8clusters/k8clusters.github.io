@@ -23,9 +23,9 @@ export class QaComponent implements OnInit {
     });
   }
 
-  textType = QA.QTypeEnum.TEXTTYPE;
-  boolType = QA.QTypeEnum.BOOLTYPE;
-  multType = QA.QTypeEnum.MULTTYPE;
+  TEXTTYPE = QA.QTypeEnum.TEXTTYPE;
+  BOOLTYPE = QA.QTypeEnum.BOOLTYPE;
+  MULTTYPE = QA.QTypeEnum.MULTTYPE;
   
   qa: QA;
 

@@ -8,13 +8,22 @@
             <div [innerHTML]="qa.question"></div>
             <p>Choices {{qa.selectionCounter}}/{{qa.maxSelection}}</p>
             <div [ngSwitch]="qa.qType">
-                <div *ngSwitchCase="textType">
+                <div *ngSwitchCase="TEXTTYPE">
                     <input type="text" />
                 </div>
-                <div *ngSwitchCase="boolType">
-                    <input type="radio">
+                <div *ngSwitchCase="BOOLTYPE">
+                    <div *ngFor="let choice of qa.choices">
+                        <div class="options">
+                            <mat-radio-button value="{{choice.index}}" [disabled]="choice.disabled"
+                                [checked]="choice.checked" [ngModelOptions]="{standalone: true}"
+                                (change)="choice.checked = !choice.checked"
+                                (change)="onChoiceSelection($event.source.value)">
+                                <label>{{choice.value}}</label>
+                            </mat-radio-button>
+                        </div>
+                    </div>
                 </div>
-                <div *ngSwitchCase="multType">
+                <div *ngSwitchCase="MULTTYPE">
                     <div *ngFor="let choice of qa.choices">
                         <div class="options">
                             <mat-checkbox value="{{choice.index}}" [disabled]="choice.disabled"
