@@ -1,75 +1,7 @@
-.sidenav-container {
-  height: 100%;
-  overflow: visible;
-}
 
-.sidenav-inner-container {
-  background-color: #3d577a;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  height: 100%;
-}
 
-.mat-drawer {
-  width: 15rem;
-}
-
-.mat-drawer-content {
-  overflow-x: hidden;
-}
-
-.sidenav-menu-title {
-  background-color: #3d577a;
-  font-weight: bold;
-  color:  #ef8206;
-  width: 100%;
-}
-
-.mat-list-item {
-    display: inline;
-    margin: 2px 2px 2px 2px;
-    padding: 5px 20px 5px 20px;
-    font-weight: bolder;
-    border-radius: 4px;
-    color: #adadad;
-}
-
-.mat-list-item:hover {
-    background: #466a99;
-    cursor: pointer;
-}
 
 .mat-list-item a {
     color: #adadad;
     text-decoration: none;
-}
-
-.mat-sidenav-content {
-    margin-right: 1rem;
-}
-
-.mat-list-item-content {
-    color: #adadad;
-}
-
-.content-title-color {
-    font-weight: bold;
-    color:  #0f202c;
-    background: #fafafa;
-    width: 100%;
-    padding: 0.4rem;
-}
-
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
-.mat-subheader {
-    display: inline;
-    margin: 2px 2px 2px 2px;
-    padding: 5px 20px 5px 20px;
-    font-weight: bolder;
-    border-radius: 4px;
 }

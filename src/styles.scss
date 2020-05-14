@@ -11,15 +11,105 @@ body {
     background: #f2f2f2;
     font-family: 'Raleway','Arial';
     margin: auto;
+    background:
+        linear-gradient(-90deg, rgba(0,0,0,.05) 1px, transparent 1px),
+        linear-gradient(rgba(0,0,0,.05) 1px, transparent 1px), 
+        linear-gradient(-90deg, rgba(0, 0, 0, .04) 1px, transparent 1px),
+        linear-gradient(rgba(0,0,0,.04) 1px, transparent 1px),
+        linear-gradient(transparent 3px, #f2f2f2 3px, #f2f2f2 78px, transparent 78px),
+        linear-gradient(-90deg, #aaa 1px, transparent 1px),
+        linear-gradient(-90deg, transparent 3px, #f2f2f2 3px, #f2f2f2 78px, transparent 78px),
+        linear-gradient(#aaa 1px, transparent 1px),
+        #f2f2f2;
+    background-size:
+        4px 4px,
+        4px 4px,
+        80px 80px,
+        80px 80px,
+        80px 80px,
+        80px 80px,
+        80px 80px,
+        80px 80px;
 }
 
+// Side Navigation Items
 .mat-toolbar-side-nav {
     text-transform: uppercase;
     margin: 2px 2px 2px 2px;
     padding: 5px 20px 5px 20px;
     font-weight: bolder;
-    background-color: #3d577a;
     border-radius: 2px;
+    background: #3d577a;
+}
+
+.sidenav-inner-container {
+    background: #3d577a;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 100%;
+}
+
+.sidenav-container {
+  height: 100%;
+  overflow: visible;
+}
+
+.mat-drawer {
+  width: 15rem;
+}
+
+.mat-drawer-content {
+  overflow-x: hidden;
+}
+
+.sidenav-menu-title {
+  background-color: #3d577a;
+  font-weight: bold;
+  color:  #ef8206;
+  width: 100%;
+}
+
+.mat-list-item {
+    display: inline;
+    margin: 2px 2px 2px 2px;
+    padding: 5px 20px 5px 20px;
+    font-weight: bolder;
+    border-radius: 4px;
+    color: #adadad;
+}
+
+.mat-list-item:hover {
+    background: #466a99;
+    cursor: pointer;
+}
+
+
+// Content Panel Middle
+.empty-div {
+    display: block;
+    padding: 0.1rem;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.sidenav-content-container {
+    max-width: 100%
+}
+
+.mat-sidenav-content {
+    margin-right: 1rem;
+}
+
+.content-title-color {
+    font-weight: bold;
+    color:  #0f202c;
+    background: #fafafa;
+    width: 100%;
+    padding: 0.4rem;
 }
 
 .root-container {
@@ -58,11 +148,6 @@ body {
     max-width: 100%;
 }
 
-.sidenav-content-container {
-    background: #fafafa;
-    max-width: 100%
-}
-
 .col {
     border: 2px solid #150072;
     padding: .4em 1.3em;
@@ -70,6 +155,14 @@ body {
 
 .options {
     padding: .15rem;
+}
+
+.mat-subheader {
+    display: inline;
+    margin: 2px 2px 2px 2px;
+    padding: 5px 20px 5px 20px;
+    font-weight: bolder;
+    border-radius: 4px;
 }
 
 .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {

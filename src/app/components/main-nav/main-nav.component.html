@@ -3,6 +3,7 @@
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false">
     <div class="sidenav-inner-container">
+      <div class="empty-div"></div>
       <mat-toolbar class="mat-toolbar-side-nav">
         <div class="sidenav-menu-title">K8Clusters</div>
       </mat-toolbar>
@@ -18,7 +19,8 @@
       </mat-nav-list>
     </div>
   </mat-sidenav>
-  <mat-sidenav-content class="color-light">
+  <mat-sidenav-content>
+    <div class="empty-div"></div>
     <div class="sidenav-content-container">
       <mat-toolbar>
         <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
