@@ -36,10 +36,7 @@ export class WysiwygEditorComponent implements AfterViewInit {
 		revealed: false,
 		maxSelection: 1,
 		choices:[],
-		selectionCounter: 0,
 		point: 0,
-		submitted: false,
-		validated: false,
 		qType: QA.QTypeEnum.MULTTYPE,
 		question: ""
 	};
