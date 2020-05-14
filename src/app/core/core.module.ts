@@ -10,6 +10,7 @@ import { WysiwygEditorComponent } from './components/wysiwyg-editor/wysiwyg-edit
 import { PrettyjsonPipe } from './pipes/prettyjson.pipe';
 import { TextInputComponent } from './components/editor/text-input/text-input.component';
 import { MultiChoiceEditorComponent } from './components/editor/multi-choice-editor/multi-choice-editor.component';
+import { QaEditorComponent } from './components/editor/qa-editor/qa-editor.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { MultiChoiceEditorComponent } from './components/editor/multi-choice-edi
     PrettyjsonPipe,
     TextInputComponent,
     MultiChoiceEditorComponent,
+    QaEditorComponent,
   ],
   imports: [
     CommonModule,

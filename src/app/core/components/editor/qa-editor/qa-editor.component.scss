@@ -1,0 +1,77 @@
+.dark {
+	padding: 1rem 1.5rem;
+    color: #000000;
+}
+
+textarea {
+    border-radius: 4px;
+	font-family: monospace;
+	background-color: lightgray;
+}
+
+input {
+    border-radius: 2px;
+	font-family: monospace;
+	background-color: lightgray;
+}
+
+form {
+	padding: 1em 1.5em;
+    color: #000000;
+}
+
+form label {
+	display: block;
+    font-weight: bold;
+    color: #000000;
+}
+
+form input {
+	width: 30em;
+}
+
+form > div {
+	margin-bottom: 1em;
+}
+
+pre {
+	background-color: lightgray;
+	border: 1px solid black;
+    border-radius: 4px;
+    border-left: 4px solid #050135;
+    color: #050135;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.6rem;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1rem 1.5rem;
+    display: block;
+    word-wrap: break-word;
+}
+
+p.alert {
+	color: orange;
+}
+
+p.alert::before {
+	content: "⚠️ ";
+}
+
+.ck-content {
+	background-color: lightgray;
+	border: 1px solid black;
+    border-left: 4px solid #050135;
+    color: #050135;
+}
+
+.ck-editor__editable {
+    min-height: 10rem !important;
+    border-radius: 0.3rem !important;
+}
+
+.ck-toolbar {
+    border-radius: 0.1rem !important;
+}
