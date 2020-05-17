@@ -12,15 +12,27 @@ export class ExamComponent implements OnInit {
   private examQaList: QA[];
   private examQaIndex: number;
   private examQaCount: number;
+  private examQa: QA;
 
   constructor(private qaService: QaService) { 
   }
 
   ngOnInit() {
     this.qaService.listQAs(10).subscribe(qaList => {
+      let index = 0;
+      qaList.forEach(item=>item.index = index++);
       this.examQaList = qaList;
-      this.examQaCount = this.examQaList.length;
+      if (this.examQaList) {
+        this.examQaCount = this.examQaList.length;
+        this.examQa = this.examQaList[0];
+      }
+      console.log("Exam Qa Count: " + this.examQaList);
     });
+  }
+
+  indexSelection(indexNumber: number) {
+    this.examQaIndex = indexNumber;
+    this.examQa = this.examQaList.find(item => item.index === indexNumber);
   }
 
   getCurrentExamQa(): QA {
@@ -35,12 +47,14 @@ export class ExamComponent implements OnInit {
   nextQaIndex() {
     if (this.examQaIndex < this.examQaCount - 1) {
       this.examQaIndex++;
+      this.examQa = this.examQaList[this.examQaIndex];
     }
   }
 
   backQaIndex() {
     if (0 < this.examQaIndex) {
       this.examQaIndex--;
+      this.examQa = this.examQaList[this.examQaIndex];
     }
   }
 

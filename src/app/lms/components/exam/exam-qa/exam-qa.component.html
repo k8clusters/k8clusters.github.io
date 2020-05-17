@@ -1,18 +1,16 @@
 <div class="card">
-  <div *ngIf="qa">
-    <mat-card-header>
-      <mat-card-title>Question Number: {{qa.id}}</mat-card-title>
-      <mat-card-subtitle>Select any {{qa.maxSelection}} from below choices!!!</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <div [innerHTML]="qa.question"></div>
-      <p>Choices {{qa.selectionCounter}}/{{qa.maxSelection}}</p>
-      <div [ngSwitch]="qa.qType">
+  <div *ngIf="examQa">
+    <div class="card-header">Question Number: {{examQa.index}}</div>
+    <div class="card-header">Select any {{examQa.maxSelection}} from below choices!!!</div>
+    <div class="card-body">
+      <div [innerHTML]="examQa.question"></div>
+      <p>Choices {{examQa.selectionCounter}}/{{examQa.maxSelection}}</p>
+      <div [ngSwitch]="examQa.qType">
         <div *ngSwitchCase="TEXTTYPE">
           <input type="text" />
         </div>
         <div *ngSwitchCase="BOOLTYPE">
-          <div *ngFor="let choice of qa.choices">
+          <div *ngFor="let choice of examQa.choices">
             <div class="options">
               <mat-radio-button value="{{choice.index}}" [disabled]="choice.disabled" [checked]="choice.checked"
                 [ngModelOptions]="{standalone: true}" (change)="choice.checked = !choice.checked"
@@ -23,7 +21,7 @@
           </div>
         </div>
         <div *ngSwitchCase="MULTTYPE">
-          <div *ngFor="let choice of qa.choices">
+          <div *ngFor="let choice of examQa.choices">
             <div class="options">
               <mat-checkbox value="{{choice.index}}" [disabled]="choice.disabled" [checked]="choice.checked"
                 [ngModelOptions]="{standalone: true}" (change)="choice.checked = !choice.checked"
@@ -34,23 +32,9 @@
           </div>
         </div>
       </div>
-    </mat-card-content>
-    <mat-card-actions>
+    </div>
+    <div class="card-footer">
       <button mat-raised-button (click)="validate()">Validate</button>
-    </mat-card-actions>
-    <mat-card-content>
-      <div class="options" *ngIf="qa.validated && qa.revealed">
-        <ul>
-          <div *ngFor="let choice of qa.choices">
-            <div [ngClass]="{
-                            'text-success':choice.correct == true && qa.validated === true,
-                            'text-fail':choice.correct == false && qa.validated === true
-                            }">
-              <li>{{choice.hint}}</li>
-            </div>
-          </div>
-        </ul>
-      </div>
-    </mat-card-content>
+    </div>
   </div>
 </div>

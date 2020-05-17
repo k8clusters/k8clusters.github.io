@@ -2,19 +2,9 @@
   <div class="card-header">Question Summary: </div>
   <div class="card-body">
     <ul>
-      <li class="question-map__not-visited">12</li>
-      <li class="question-map__not-visited">12</li>
-      <li class="question-map__not-visited">12</li>
-      <li class="question-map__not-visited">12</li>
-      <li class="question-map__attempt-icon">12</li>
-      <li class="question-map__not-visited">12</li>
-      <li class="question-map__not-visited">12</li>
-      <li class="question-map__review-answered">12</li>
-      <li class="question-map__review">12</li>
-      <li class="question-map__not-visited">12</li>
-      <li class="question-map__not-answered">12</li>
-      <li class="question-map__answered">12</li>
-      <li class="question-map__not-visited">12</li>
+      <div *ngFor="let examQa of examQaList">
+        <button [ngClass]="getQaOverviewClass(examQa)" (click)="selectQuestionIndex(examQa)">{{examQa.index}}</button>
+      </div>
     </ul>
   </div>
 </div>
