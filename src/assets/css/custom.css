@@ -1,0 +1,8 @@
+.card { 
+  border-radius: 0.15rem; 
+  margin: 0.1rem;
+}
+
+.table .thead-dark .thead-light {
+  border-radius: 0.1rem; 
+}

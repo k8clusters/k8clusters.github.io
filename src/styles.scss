@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:300,700');
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import 'https://fonts.googleapis.com/css?family=Raleway:300,700';
+@import './assets/css/custom.css';
 
 html,
 body {
@@ -118,8 +118,8 @@ body {
     padding: 0.4rem;
 }
 
-.root-container {
-    padding: 1rem;
+.root-content-container {
+    margin: 1rem;
 }
 
 .light-blue-content-item {

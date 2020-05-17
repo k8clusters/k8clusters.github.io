@@ -27,6 +27,7 @@ export class QaService {
       this.qaTest = data;
     });
   }
+  
   nextQaIndex() {
     if (this.qaIndex < this.qaTest.length - 1) {
       this.qaIndex++;

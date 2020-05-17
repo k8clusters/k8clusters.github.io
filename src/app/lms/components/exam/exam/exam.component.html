@@ -1,9 +1,13 @@
-<div class="container">
-  <div>
-    <app-exam-timer [duration]="30" (submitExam)="onSubmitExam()"></app-exam-timer>
+<div class="card jumbotron">
+  <div class="row">
+    <div class="col-12">
+      <app-exam-timer [duration]="30" [examTitle]="'Some Value'" (submitExam)="onSubmitExam()"></app-exam-timer>
+    </div>
   </div>
-  <div>
-    <p>exam works!</p>
+  <div class="row">
+    <div class="col-9 question-panel">
+      <app-exam-qa [(examQa)]="getCurrentExamQa()" [(examQaIndex)]="examQaIndex"></app-exam-qa>
+    </div>
+    <div class="col-3 exam-overview"><app-exam-overview></app-exam-overview></div>
   </div>
-  <div>app-exam-overview</div>
 </div>

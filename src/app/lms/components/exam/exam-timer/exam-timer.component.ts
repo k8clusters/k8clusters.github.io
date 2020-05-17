@@ -8,7 +8,9 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 export class ExamTimerComponent implements OnInit {
 
   @Input() duration;
+  @Input() examTitle;
   @Output() submitExam = new EventEmitter<boolean>();
+  
   private timeLeft: number = -10;
   private interval;
 

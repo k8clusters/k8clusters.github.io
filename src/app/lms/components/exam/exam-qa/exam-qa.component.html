@@ -1,0 +1,56 @@
+<div class="card">
+  <div *ngIf="qa">
+    <mat-card-header>
+      <mat-card-title>Question Number: {{qa.id}}</mat-card-title>
+      <mat-card-subtitle>Select any {{qa.maxSelection}} from below choices!!!</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div [innerHTML]="qa.question"></div>
+      <p>Choices {{qa.selectionCounter}}/{{qa.maxSelection}}</p>
+      <div [ngSwitch]="qa.qType">
+        <div *ngSwitchCase="TEXTTYPE">
+          <input type="text" />
+        </div>
+        <div *ngSwitchCase="BOOLTYPE">
+          <div *ngFor="let choice of qa.choices">
+            <div class="options">
+              <mat-radio-button value="{{choice.index}}" [disabled]="choice.disabled" [checked]="choice.checked"
+                [ngModelOptions]="{standalone: true}" (change)="choice.checked = !choice.checked"
+                (change)="onChoiceSelection($event.source.value)">
+                <label>{{choice.value}}</label>
+              </mat-radio-button>
+            </div>
+          </div>
+        </div>
+        <div *ngSwitchCase="MULTTYPE">
+          <div *ngFor="let choice of qa.choices">
+            <div class="options">
+              <mat-checkbox value="{{choice.index}}" [disabled]="choice.disabled" [checked]="choice.checked"
+                [ngModelOptions]="{standalone: true}" (change)="choice.checked = !choice.checked"
+                (change)="onChoiceSelection($event.source.value)">
+                <label>{{choice.value}}</label>
+              </mat-checkbox>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="validate()">Validate</button>
+    </mat-card-actions>
+    <mat-card-content>
+      <div class="options" *ngIf="qa.validated && qa.revealed">
+        <ul>
+          <div *ngFor="let choice of qa.choices">
+            <div [ngClass]="{
+                            'text-success':choice.correct == true && qa.validated === true,
+                            'text-fail':choice.correct == false && qa.validated === true
+                            }">
+              <li>{{choice.hint}}</li>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </mat-card-content>
+  </div>
+</div>

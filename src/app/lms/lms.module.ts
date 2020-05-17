@@ -12,11 +12,12 @@ import { QaService } from './services/core/qa.service';
 import { ExamTimerComponent } from './components/exam/exam-timer/exam-timer.component';
 import { ExamOverviewComponent } from './components/exam/exam-overview/exam-overview.component';
 import { ExamComponent } from './components/exam/exam/exam.component';
+import { ExamQaComponent } from './components/exam/exam-qa/exam-qa.component';
 
 
 
 @NgModule({
-  declarations: [QaComponent, QaTestComponent, ExamTimerComponent, ExamOverviewComponent, ExamComponent],
+  declarations: [QaComponent, QaTestComponent, ExamTimerComponent, ExamOverviewComponent, ExamComponent, ExamQaComponent],
   exports: [QaComponent],
   imports: [
     MatRadioModule,
