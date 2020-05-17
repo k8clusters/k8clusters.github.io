@@ -9,11 +9,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material'
 import { QaService } from './services/core/qa.service';
+import { ExamTimerComponent } from './components/exam/exam-timer/exam-timer.component';
+import { ExamOverviewComponent } from './components/exam/exam-overview/exam-overview.component';
+import { ExamComponent } from './components/exam/exam/exam.component';
 
 
 
 @NgModule({
-  declarations: [QaComponent, QaTestComponent],
+  declarations: [QaComponent, QaTestComponent, ExamTimerComponent, ExamOverviewComponent, ExamComponent],
   exports: [QaComponent],
   imports: [
     MatRadioModule,

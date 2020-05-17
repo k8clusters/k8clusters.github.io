@@ -10,6 +10,7 @@ import { LoginComponent } from './core/components/login/login.component';
 import { UserComponent } from './core/components/user/user.component';
 import { WysiwygEditorComponent } from './core/components/wysiwyg-editor/wysiwyg-editor.component';
 import { QaEditorComponent } from './core/components/editor/qa-editor/qa-editor.component';
+import { ExamComponent } from './lms/components/exam/exam/exam.component';
 const routes: Routes = [
   {
     path: 'login',
@@ -33,6 +34,9 @@ const routes: Routes = [
   }, {
     path: 'qaEditor',
     component: QaEditorComponent, canActivate: [AuthGaurdService]
+  }, {
+    path: 'exam',
+    component: ExamComponent
   }
 ];
 

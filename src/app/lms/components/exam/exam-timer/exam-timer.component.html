@@ -1,0 +1,11 @@
+<div class="div-right-align">
+    <div *ngIf="timeLeft < 0">
+      <p>Starting Exam!!!</p>
+    </div>
+    <div *ngIf="timeLeft>0">
+      <p>{{toHoursMinutesSeconds()}} Seconds Left....</p>
+    </div>
+    <div *ngIf="timeLeft === 0">
+      <p>Finished Exam!!!</p>
+    </div>
+</div>
