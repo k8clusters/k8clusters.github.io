@@ -1,5 +1,5 @@
 {
-  "compileOnSave": false,
+  "compileOnSave": true,
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
@@ -10,8 +10,10 @@
     "allowJs": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "skipLibCheck": true,
     "importHelpers": true,
     "target": "es2015",
+    "allowSyntheticDefaultImports": true,
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -22,9 +24,6 @@
   },
   "include": [
     "node_modules/@amitkshirsagar13/**/*"
-  ], 
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
-  }
+  ],
+    "resolveJsonModule": true
 }

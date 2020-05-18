@@ -12,13 +12,14 @@ export class AppComponent implements OnInit {
   constructor(public authService: AuthService) {
   }
   ngOnInit() {
-    this.authService.handleAuthentication().subscribe(userAuthenticated => {
-      if (userAuthenticated) {
-      } else {
-      }
-    });
-
-    this.authService.login();
+    if (this.authService.isAuthenticated()) {
+      this.authService.handleAuthentication().subscribe(userAuthenticated => {
+        if (userAuthenticated) {
+        } else {
+        }
+      });
+      this.authService.login();
+    }
   }
 
 }
