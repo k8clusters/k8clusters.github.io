@@ -1,11 +1,11 @@
-<div class="choice-input">
+<div class="div-choice-input">
     <div class="choice">
         <div *ngIf="editorMode">
             <input class="line-input" [(ngModel)]="inputModel.hint" (keyup.enter)="toggleEditor()"
             placeholder="Hint/Explaination for Choice">
             <br />
             <input *ngIf="qType !== 'TEXTTYPE'" class="line-input" [(ngModel)]="inputModel.value" (keyup.enter)="toggleEditor()" placeholder="Answer Choice">
-            <textarea *ngIf="qType === 'TEXTTYPE'" class="line-textarea" [(ngModel)]="inputModel.value" (keyup.enter)="toggleEditor()"
+            <textarea *ngIf="qType === 'TEXTTYPE'" class="line-textarea-30-5" [(ngModel)]="inputModel.value" (keyup.enter)="toggleEditor()"
                 placeholder="Detailed Answer for Question!!!"></textarea>
         </div>
         <div *ngIf="!editorMode">
@@ -14,10 +14,18 @@
         </div>
     </div>
     <div class="vertical-center">
-        <input class="checkmark" type="checkbox" *ngIf="qType === 'MULTTYPE'" value="{{inputModel.index}}" [checked]="inputModel.correct"
-            (change)="markAnswer($event.target.checked, false)">
-        <input type="radio" *ngIf="qType === 'BOOLTYPE'" value="inputModel.index" [checked]="inputModel.correct"
-            (change)="markAnswer($event.target.checked, true)">
+        <div *ngIf="qType === 'MULTTYPE'" class="custom-control custom-checkbox vertical-marigned">
+            <input class="custom-control-input" id="MULTTYPE{{inputModel.index}}" type="checkbox" value="{{inputModel.index}}"
+                [checked]="inputModel.correct" (change)="markAnswer($event.target.checked, false)">
+            <label class="custom-control-label" for="MULTTYPE{{inputModel.index}}"></label>
+        </div>
+        
+        <div *ngIf="qType === 'BOOLTYPE'" class="custom-control custom-radio vertical-marigned">
+            <input type="radio" id="BOOLTYPE{{inputModel.index}}" class="custom-control-input" value="inputModel.index" [checked]="inputModel.correct"
+                (change)="markAnswer($event.target.checked, true)">
+            <label class="custom-control-label" for="BOOLTYPE{{inputModel.index}}"></label>
+        </div>
+        
     </div>
     <div class="vertical-center">
         <div *ngIf="inputModel.correct">*Marked as Correct Answer</div>

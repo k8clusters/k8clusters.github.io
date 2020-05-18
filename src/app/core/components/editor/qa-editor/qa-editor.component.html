@@ -13,12 +13,14 @@
       <app-multi-choice-editor [(choices)]="qa.choices" [(qType)]="qa.qType" [(maxSelection)]="qa.maxSelection">
       </app-multi-choice-editor>
     </div>
-    <div>
-      <div class="empty-div-inline" style="display: inline;">
-        <button mat-raised-button type="reset" (click)="reset()">Reset Question</button>
-      </div>
+    <div><div class="empty-div-inline" style="display: inline;">
+      <button type="reset" (click)="reset()" class="btn btn-light">Reset Question</button>
+    </div>
+    <div class="empty-div-inline" style="display: inline; margin-left: 1rem;">
+      <button type="button" (click)="printQa()" class="btn btn-dark">Print Question</button>
+    </div>
       <div class="empty-div" style="display: inline; margin-left: 1rem;">
-        <button mat-raised-button type="submit">Add Question</button>
+        <button type="submit" class="btn btn-primary">Add Question</button>
       </div>
     </div>
   </form>

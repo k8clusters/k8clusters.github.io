@@ -24,20 +24,20 @@ export class QaEditorComponent implements AfterViewInit {
 
   public editorConfig = {
     placeholder: 'Type the content here!',
-    toolbar: {
-      items: [
-        'heading',
-        '|',
-        'bold',
-        'italic',
-        'link',
-        'bulletedList',
-        'numberedList',
-        'blockQuote',
-        'undo',
-        'redo'
-      ]
-    },
+    // toolbar: {
+    //   items: [
+    //     'heading',
+    //     '|',
+    //     'bold',
+    //     'italic',
+    //     'link',
+    //     'bulletedList',
+    //     'numberedList',
+    //     'blockQuote',
+    //     'undo',
+    //     'redo'
+    //   ]
+    // },
     // image: {
     //     toolbar: [
     //         'imageStyle:full',
@@ -54,14 +54,7 @@ export class QaEditorComponent implements AfterViewInit {
   }
 
   public Editor = ClassicEditor;
-  public qa: QA = {
-    revealed: false,
-    maxSelection: 1,
-    choices: [],
-    point: 0,
-    qType: QA.QTypeEnum.MULTTYPE,
-    question: ""
-  };
+  public qa: QA = this.resetQa();
 
   public onReady(editor) {
     editor.ui.getEditableElement().parentElement.insertBefore(
@@ -87,9 +80,26 @@ export class QaEditorComponent implements AfterViewInit {
       this.qa = data;
     });
     console.log(this.qa);
+    this.reset();
   }
 
   public reset() {
     this.demoForm!.reset();
+    this.qa = this.resetQa();
+  }
+
+  private resetQa(): QA {
+    return <QA> {
+      revealed: false,
+      maxSelection: 1,
+      choices: [],
+      point: 0,
+      qType: QA.QTypeEnum.MULTTYPE,
+      question: ""
+    };
+  }
+
+  public printQa() {
+    console.log(this.qa);
   }
 }

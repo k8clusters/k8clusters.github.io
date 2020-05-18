@@ -1,12 +1,13 @@
 <div>
     <div>
-        <select class="line-select" [(ngModel)]="qType" type="text" name="qType" id="qType" (change)="resetChoices()">
+        <select class="line-select" [(ngModel)]="qType" type="text" name="qType" id="qType" #typeQ (change)="resetChoices(typeQ.value)">
             <option value="MULTTYPE" style="font-weight: bold;">Multiple Choices</option>
             <option value="BOOLTYPE" style="font-weight: bold;">True/False</option>
             <option value="TEXTTYPE" style="font-weight: bold;">Text Answer</option>
         </select>
-        <button *ngIf="qType === 'MULTTYPE'" (click)="addNewChoice()">Add New Choice</button>
-        <input *ngIf="qType === 'MULTTYPE'" style="display: inline; margin: 0.5rem; width: 6rem;" class="line-input" [(ngModel)]="maxSelection" placeholder="Select any #">
+        <button type="button" *ngIf="qType === 'MULTTYPE'" (click)="addNewChoice()" class="btn btn-secondary">Add New Choice</button>
+        <input *ngIf="qType === 'MULTTYPE'" style="display: inline; margin: 0.5rem; width: 6rem;" 
+            class="line-input" [(ngModel)]="maxSelection" placeholder="Select any #" (focusout)="maxSelectionChanged()">
     </div>
     <div *ngFor="let choice of choices">
         <app-text-input [(inputModel)]="choice" [qType]="qType" (correctAnswerMarked)='processAnswer($event)'></app-text-input>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 import { Choice, QA } from '@amitkshirsagar13/qa-server';
 
@@ -17,7 +17,13 @@ export class MultiChoiceEditorComponent implements OnInit {
 
   @Input() choices: Choice[] = [];
   @Input() qType: QA.QTypeEnum;
+  @Output() qTypeChange = new EventEmitter<string>();
   @Input() maxSelection: number;
+  @Output() maxSelectionChange = new EventEmitter<number>();
+
+  public maxSelectionChanged() {
+    this.maxSelectionChange.emit(this.maxSelection);
+  }
 
   public addNewChoice() {
     let choice: Choice = this.newChoice();
@@ -26,8 +32,10 @@ export class MultiChoiceEditorComponent implements OnInit {
     console.log(JSON.stringify(this.choices));
   }
 
-  public resetChoices() {
-    console.log("Reseting Choices");
+  public resetChoices(selectedType) {
+    this.qType = selectedType;
+    this.qTypeChange.emit(this.qType);
+    console.log(selectedType);
     while (this.choices.length < 2) {
       this.addNewChoice();
     }
