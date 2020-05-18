@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="vertical-center">
-        <input type="checkbox" *ngIf="qType === 'MULTTYPE'" value="{{inputModel.index}}" [checked]="inputModel.correct"
+        <input class="checkmark" type="checkbox" *ngIf="qType === 'MULTTYPE'" value="{{inputModel.index}}" [checked]="inputModel.correct"
             (change)="markAnswer($event.target.checked, false)">
         <input type="radio" *ngIf="qType === 'BOOLTYPE'" value="inputModel.index" [checked]="inputModel.correct"
             (change)="markAnswer($event.target.checked, true)">
