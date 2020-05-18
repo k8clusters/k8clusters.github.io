@@ -1,12 +1,4 @@
 <div class="choice-input">
-    <div class="vertical-center">
-        <input type="checkbox" *ngIf="qType === 'MULTTYPE'" 
-        value="{{inputModel.index}}" [checked]="inputModel.correct" 
-        (change)="markAnswer($event.target.checked, false)">
-        <input type="radio" *ngIf="qType === 'BOOLTYPE'" 
-        value="inputModel.index" [checked]="inputModel.correct" 
-        (change)="markAnswer($event.target.checked, true)">
-    </div>
     <div class="choice">
         <div *ngIf="editorMode">
             <input class="line-input" [(ngModel)]="inputModel.hint" (keyup.enter)="toggleEditor()"
@@ -20,6 +12,12 @@
             <p>Answer: {{inputModel.value}}</p>
             <p>Hint: {{inputModel.hint}}</p>
         </div>
+    </div>
+    <div class="vertical-center">
+        <input type="checkbox" *ngIf="qType === 'MULTTYPE'" value="{{inputModel.index}}" [checked]="inputModel.correct"
+            (change)="markAnswer($event.target.checked, false)">
+        <input type="radio" *ngIf="qType === 'BOOLTYPE'" value="inputModel.index" [checked]="inputModel.correct"
+            (change)="markAnswer($event.target.checked, true)">
     </div>
     <div class="vertical-center">
         <div *ngIf="inputModel.correct">*Marked as Correct Answer</div>
