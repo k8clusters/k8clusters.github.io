@@ -5,38 +5,40 @@
     <div class="card-body">
       <div [innerHTML]="examQa.question"></div>
       <p>Choices {{examQa.selectionCounter}}/{{examQa.maxSelection}}</p>
-      <div [ngSwitch]="examQa.qType">
-        <div *ngSwitchCase="TEXTTYPE">
-          <input type="text" />
-        </div>
-        <div *ngSwitchCase="BOOLTYPE">
-          <div *ngFor="let choice of examQa.choices">
-            <div class="options">
-              <input type="radio" value="{{choice.index}}" 
-              [disabled]="choice.disabled" 
-              [checked]="choice.checked"
-                (change)="choice.checked = !choice.checked"
-                (change)="onChoiceSelection(this.value)">
-                <label>{{choice.value}}</label>
+      <div class="choice-options">
+        <div [ngSwitch]="examQa.qType">
+          <div *ngSwitchCase="TEXTTYPE">
+            <input type="text" />
+          </div>
+          <div *ngSwitchCase="BOOLTYPE">
+            <div *ngFor="let choice of examQa.choices">
+              <div class="custom-control custom-radio vertical-marigned options">
+                <input  class="custom-control-input" id="BOOLTYPE{{choice.index}}" type="radio" value="{{choice.index}}" 
+                  [disabled]="choice.disabled" 
+                  [checked]="choice.checked"
+                  (click)="choice.checked = !choice.checked"
+                  (click)="onChoiceSelection(this.value)">
+                  <label class="custom-control-label choice-item" for="BOOLTYPE{{choice.index}}">{{choice.value}}</label>
+              </div>
             </div>
           </div>
-        </div>
-        <div *ngSwitchCase="MULTTYPE">
-          <div *ngFor="let choice of examQa.choices">
-            <div class="options">
-              <input type="checkbox" value="{{choice.index}}" 
-                [disabled]="choice.disabled" 
-                [checked]="choice.checked"
-                (change)="choice.checked = !choice.checked"
-                (change)="onChoiceSelection(this.value)">
-                <label>{{choice.value}}</label>
+          <div *ngSwitchCase="MULTTYPE">
+            <div *ngFor="let choice of examQa.choices">
+              <div class="custom-control custom-checkbox vertical-marigned options">
+                <input class="custom-control-input" id="MULTTYPE{{choice.index}}" type="checkbox" value="{{choice.index}}" 
+                  [disabled]="choice.disabled" 
+                  [checked]="choice.checked"
+                  (change)="choice.checked = !choice.checked"
+                  (change)="onChoiceSelection(this.value)">
+                  <label class="custom-control-label choice-item" for="MULTTYPE{{choice.index}}">{{choice.value}}</label>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="card-footer">
-      <button (click)="validate()">Validate</button>
+      <button class="btn btn-primary" (click)="validate()">Save</button>
     </div>
   </div>
 </div>
