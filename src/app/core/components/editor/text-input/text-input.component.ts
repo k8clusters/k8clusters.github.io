@@ -25,13 +25,11 @@ export class TextInputComponent implements OnInit {
     this.editorMode = !this.editorMode;
   }
 
-  public changeCheckBox(event: MatCheckboxChange) {
-    this.inputModel.correct = event.checked;
-  }
-
-  public changeRadio(event: MatRadioChange) {
-    this.inputModel.correct = event.source.checked;
-    this.correctAnswerMarked.emit(this.inputModel);
+  public markAnswer(checked: boolean, emitEvent: boolean) {
+    this.inputModel.correct = checked;
+    if (emitEvent) {
+      this.correctAnswerMarked.emit(this.inputModel);
+    }
   }
 
 }

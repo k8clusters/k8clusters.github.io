@@ -1,8 +1,11 @@
 <div class="choice-input">
     <div class="vertical-center">
-        <mat-checkbox *ngIf="qType === 'MULTTYPE'" [checked]="inputModel.correct" [ngModelOptions]="{standalone: true}" (change)="changeCheckBox($event)">
-        </mat-checkbox>
-        <mat-radio-button *ngIf="qType === 'BOOLTYPE'" [checked]="inputModel.correct" [ngModelOptions]="{standalone: true}" (change)="changeRadio($event)"></mat-radio-button>
+        <input type="checkbox" *ngIf="qType === 'MULTTYPE'" 
+        value="{{inputModel.index}}" [checked]="inputModel.correct" 
+        (change)="markAnswer($event.target.checked, false)">
+        <input type="radio" *ngIf="qType === 'BOOLTYPE'" 
+        value="inputModel.index" [checked]="inputModel.correct" 
+        (change)="markAnswer($event.target.checked, true)">
     </div>
     <div class="choice">
         <div *ngIf="editorMode">

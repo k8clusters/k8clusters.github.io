@@ -19,7 +19,7 @@ export class ExamComponent implements OnInit {
 
   ngOnInit() {
     this.qaService.listQAs(10).subscribe(qaList => {
-      let index = 0;
+      let index = 1;
       qaList.forEach(item=>item.index = index++);
       this.examQaList = qaList;
       if (this.examQaList) {

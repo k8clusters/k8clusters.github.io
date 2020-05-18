@@ -12,29 +12,31 @@
         <div *ngSwitchCase="BOOLTYPE">
           <div *ngFor="let choice of examQa.choices">
             <div class="options">
-              <mat-radio-button value="{{choice.index}}" [disabled]="choice.disabled" [checked]="choice.checked"
-                [ngModelOptions]="{standalone: true}" (change)="choice.checked = !choice.checked"
-                (change)="onChoiceSelection($event.source.value)">
+              <input type="radio" value="{{choice.index}}" 
+              [disabled]="choice.disabled" 
+              [checked]="choice.checked"
+                (change)="choice.checked = !choice.checked"
+                (change)="onChoiceSelection(this.value)">
                 <label>{{choice.value}}</label>
-              </mat-radio-button>
             </div>
           </div>
         </div>
         <div *ngSwitchCase="MULTTYPE">
           <div *ngFor="let choice of examQa.choices">
             <div class="options">
-              <mat-checkbox value="{{choice.index}}" [disabled]="choice.disabled" [checked]="choice.checked"
-                [ngModelOptions]="{standalone: true}" (change)="choice.checked = !choice.checked"
-                (change)="onChoiceSelection($event.source.value)">
+              <input type="checkbox" value="{{choice.index}}" 
+                [disabled]="choice.disabled" 
+                [checked]="choice.checked"
+                (change)="choice.checked = !choice.checked"
+                (change)="onChoiceSelection(this.value)">
                 <label>{{choice.value}}</label>
-              </mat-checkbox>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="card-footer">
-      <button mat-raised-button (click)="validate()">Validate</button>
+      <button (click)="validate()">Validate</button>
     </div>
   </div>
 </div>
