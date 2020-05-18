@@ -9,5 +9,6 @@
   </div>
 </div>
 <div *ngIf="examQaList" class="card-footer text-center">
-  <button class="btn btn-primary float-right" (click)="submitExam()">Submit Exam</button>
+  <button class="btn btn-primary" (click)="submitExam()" style="display: inline; margin-right: 4rem;">Submit Exam</button>
+  <button class="btn btn-danger" (click)="abandonExam()">Abandon Exam</button>
 </div>
