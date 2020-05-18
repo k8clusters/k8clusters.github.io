@@ -1,10 +1,13 @@
-<div class="card">
-  <div class="card-header">Question Summary: </div>
-  <div class="card-body">
+<div class="card card-overview text-center">
+  <div class="card-header text-left">Question Summary: </div>
+  <div *ngIf="examQaList" class="card-body">
     <ul>
       <div *ngFor="let examQa of examQaList">
         <button [ngClass]="getQaOverviewClass(examQa)" (click)="selectQuestionIndex(examQa)">{{examQa.index}}</button>
       </div>
     </ul>
   </div>
+</div>
+<div *ngIf="examQaList" class="card-footer text-center">
+  <button class="btn btn-primary float-right" (click)="submitExam()">Submit Exam</button>
 </div>

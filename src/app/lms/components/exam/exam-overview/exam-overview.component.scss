@@ -6,6 +6,10 @@
     text-align: center;
 }
 
+.card-overview {
+  height: 35rem;
+}
+
 ul {
     display:grid;
     grid-template-rows: repeat(auto-fill, 4rem);

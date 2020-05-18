@@ -37,8 +37,10 @@
         </div>
       </div>
     </div>
-    <div class="card-footer">
-      <button class="btn btn-primary" (click)="validate()">Save</button>
-    </div>
   </div>
+</div>
+<div *ngIf="examQa" class="card-footer text-center">
+  <button class="btn btn-dark float-left" (click)="prev()" style="display: inline; margin-right: 4rem;">Prev</button>
+  <button class="btn btn-light" (click)="review()" style="display: inline; margin-right: 4rem;">Review Toggle</button>
+  <button class="btn btn-primary float-right" (click)="next()">Next</button>
 </div>
