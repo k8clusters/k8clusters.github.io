@@ -26,17 +26,19 @@ export class ExamQaComponent implements OnInit {
   public next() {
     this.examQaIndex++;
     this.examQaIndexChange.emit(this.examQaIndex);
-    console.log(this.examQaIndex);
   }
 
   public prev() {
     this.examQaIndex--;
     this.examQaIndexChange.emit(this.examQaIndex);
-    console.log(this.examQaIndex);
+  }
+
+  public review() {
+    this.examQa.markedForReview = !this.examQa.markedForReview;
+    this.examQaIndexChange.emit(this.examQaIndex);
   }
 
   ngOnInit() {
-    console.log("ExamQaComponent:ngOnInit: "+this.examQa);
   }
 
   public onChoiceSelection = (selectionValue: number) => {
@@ -50,9 +52,11 @@ export class ExamQaComponent implements OnInit {
     this.examQa.choices.forEach((choice) => {
       this.processDisableChoices(choice, selectionValue);
     });
+    this.examQaIndexChange.emit(this.examQaIndex);
   }
 
   private processSelectionCounter = (choice: Choice, selectionValue: number) => {
+    this.examQa.attempted = true;
     if (choice.checked) {
       this.examQa.selectionCounter = this.examQa.selectionCounter + 1;
     }

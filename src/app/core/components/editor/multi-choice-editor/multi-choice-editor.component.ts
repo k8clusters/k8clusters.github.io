@@ -29,13 +29,11 @@ export class MultiChoiceEditorComponent implements OnInit {
     let choice: Choice = this.newChoice();
     choice.index = this.choices.length;
     this.choices.push(choice);
-    console.log(JSON.stringify(this.choices));
   }
 
   public resetChoices(selectedType) {
     this.qType = selectedType;
     this.qTypeChange.emit(this.qType);
-    console.log(selectedType);
     while (this.choices.length < 2) {
       this.addNewChoice();
     }

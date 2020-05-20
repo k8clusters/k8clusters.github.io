@@ -79,7 +79,6 @@ export class QaEditorComponent implements AfterViewInit {
     this.qaService.postQA(this.qa).subscribe(data => {
       this.qa = data;
     });
-    console.log(this.qa);
     this.reset();
   }
 

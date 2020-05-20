@@ -2,8 +2,8 @@
   <div class="card-header text-left">Question Summary: </div>
   <div *ngIf="examQaList" class="card-body">
     <ul>
-      <div *ngFor="let examQa of examQaList">
-        <button [ngClass]="getQaOverviewClass(examQa)" (click)="selectQuestionIndex(examQa)">{{examQa.index}}</button>
+      <div *ngFor="let examQa of examQaList; index as i">
+        <button [ngClass]="qaClassName[i]" (click)="selectQuestionIndex(examQa)">{{examQa.index}}</button>
       </div>
     </ul>
   </div>

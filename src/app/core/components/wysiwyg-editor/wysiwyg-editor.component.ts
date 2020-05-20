@@ -84,11 +84,9 @@ export class WysiwygEditorComponent implements AfterViewInit {
 	}
 
 	public onSubmit() {
-		console.log( JSON.stringify(this.qa) );
 		this.qaService.postQA(this.qa).subscribe(data => {
 			this.qa = data;
 		});
-		console.log( JSON.stringify(this.qa) );
 	}
 
 	public reset() {

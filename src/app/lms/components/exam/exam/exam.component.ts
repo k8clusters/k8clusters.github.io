@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { QaControllerService, QA } from '@amitkshirsagar13/qa-server';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { QA } from '@amitkshirsagar13/qa-server';
 import { QaService } from '../../../services/core/qa.service';
+import { ExamOverviewComponent } from '../exam-overview/exam-overview.component';
 
 @Component({
   selector: 'app-exam',
@@ -8,6 +9,7 @@ import { QaService } from '../../../services/core/qa.service';
   styleUrls: ['./exam.component.scss']
 })
 export class ExamComponent implements OnInit {
+  @ViewChild(ExamOverviewComponent, { static: false }) examOverviewComponent;
 
   private examQaList: QA[];
   private examQaIndex: number;
@@ -27,13 +29,16 @@ export class ExamComponent implements OnInit {
         this.indexSelection(1);
         this.examQa = this.examQaList[0];
       }
-      console.log("Exam Qa Count: " + this.examQaList);
     });
   }
 
   indexSelection(indexNumber: number) {
+    if (this.examOverviewComponent) {
+      this.examOverviewComponent.markClassForQas();
+    }
     this.examQaIndex = indexNumber;
     this.examQa = this.examQaList.find(item => item.index === indexNumber);
+    this.examQa.viewed = true;
     this.prev();
     this.next();
   }
@@ -50,7 +55,6 @@ export class ExamComponent implements OnInit {
   nextEnabled: boolean = false;
 
   prev() {
-    console.log("prev"+this.examQaIndex);
     if (1 < this.examQaIndex) {
       this.prevEnabled = true;
     } else {
@@ -59,7 +63,6 @@ export class ExamComponent implements OnInit {
   }
 
   next() {
-    console.log("next"+this.examQaIndex);
     if (this.examQaIndex < this.examQaCount) {
       this.nextEnabled = true;
     } else {
