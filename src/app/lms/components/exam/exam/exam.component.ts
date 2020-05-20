@@ -24,6 +24,7 @@ export class ExamComponent implements OnInit {
       this.examQaList = qaList;
       if (this.examQaList) {
         this.examQaCount = this.examQaList.length;
+        this.indexSelection(1);
         this.examQa = this.examQaList[0];
       }
       console.log("Exam Qa Count: " + this.examQaList);
@@ -33,6 +34,8 @@ export class ExamComponent implements OnInit {
   indexSelection(indexNumber: number) {
     this.examQaIndex = indexNumber;
     this.examQa = this.examQaList.find(item => item.index === indexNumber);
+    this.prev();
+    this.next();
   }
 
   getCurrentExamQa(): QA {
@@ -43,18 +46,24 @@ export class ExamComponent implements OnInit {
     console.log("Submit Exam to Server on timer!!!");
   }
 
+  prevEnabled: boolean = false;
+  nextEnabled: boolean = false;
 
-  nextQaIndex() {
-    if (this.examQaIndex < this.examQaCount - 1) {
-      this.examQaIndex++;
-      this.examQa = this.examQaList[this.examQaIndex];
+  prev() {
+    console.log("prev"+this.examQaIndex);
+    if (1 < this.examQaIndex) {
+      this.prevEnabled = true;
+    } else {
+      this.prevEnabled = false;
     }
   }
 
-  backQaIndex() {
-    if (0 < this.examQaIndex) {
-      this.examQaIndex--;
-      this.examQa = this.examQaList[this.examQaIndex];
+  next() {
+    console.log("next"+this.examQaIndex);
+    if (this.examQaIndex < this.examQaCount) {
+      this.nextEnabled = true;
+    } else {
+      this.nextEnabled = false;
     }
   }
 

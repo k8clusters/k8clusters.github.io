@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { QA, Choice } from '@amitkshirsagar13/qa-server';
 
 @Component({
@@ -8,14 +8,31 @@ import { QA, Choice } from '@amitkshirsagar13/qa-server';
 })
 export class ExamQaComponent implements OnInit {
 
+  @Input() prevEnabled: boolean;
+  @Input() nextEnabled: boolean;
+
   @Input() examQa: QA;
+  @Output() examQaChange = new EventEmitter<QA>();
   @Input() examQaIndex: number;
+  @Output() examQaIndexChange = new EventEmitter<number>();
 
   TEXTTYPE = QA.QTypeEnum.TEXTTYPE;
   BOOLTYPE = QA.QTypeEnum.BOOLTYPE;
   MULTTYPE = QA.QTypeEnum.MULTTYPE;
 
   constructor() {
+  }
+
+  public next() {
+    this.examQaIndex++;
+    this.examQaIndexChange.emit(this.examQaIndex);
+    console.log(this.examQaIndex);
+  }
+
+  public prev() {
+    this.examQaIndex--;
+    this.examQaIndexChange.emit(this.examQaIndex);
+    console.log(this.examQaIndex);
   }
 
   ngOnInit() {

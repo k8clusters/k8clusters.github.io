@@ -35,7 +35,6 @@ export class ExamOverviewComponent implements OnInit {
     if (qaItem) {
       className = qaItem.selectionCounter > 0 ? 'question-map__answered' : className;
     }
-    console.log(className);
     return className;
   }
 

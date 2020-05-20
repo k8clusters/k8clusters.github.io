@@ -1,4 +1,4 @@
-<div class="card card-overview text-center">
+<div class="card card-overview">
   <div class="card-header text-left">Question Summary: </div>
   <div *ngIf="examQaList" class="card-body">
     <ul>
@@ -7,8 +7,9 @@
       </div>
     </ul>
   </div>
-</div>
-<div *ngIf="examQaList" class="card-footer text-center">
-  <button class="btn btn-primary" (click)="submitExam()" style="display: inline; margin-right: 4rem;">Submit Exam</button>
-  <button class="btn btn-danger" (click)="abandonExam()">Abandon Exam</button>
+  <div *ngIf="examQaList" class="card-footer text-center">
+    <button class="btn btn-primary" (click)="submitExam()" style="display: inline; margin-right: 4rem;">Submit
+      Exam</button>
+    <button class="btn btn-danger" (click)="abandonExam()">Abandon Exam</button>
+  </div>
 </div>

@@ -1,7 +1,7 @@
-<div class="card">
-  <div *ngIf="examQa">
+<div *ngIf="examQa" class="card">
+  <div class="card">
     <div class="card-header">Question Number: {{examQa.index}}</div>
-    <div class="card-header">Select any {{examQa.maxSelection}} from below choices!!!</div>
+    <!-- <div class="card-header">Select any {{examQa.maxSelection}} from below choices!!!</div> -->
     <div class="card-body">
       <div [innerHTML]="examQa.question"></div>
       <p>Choices {{examQa.selectionCounter}}/{{examQa.maxSelection}}</p>
@@ -37,10 +37,10 @@
         </div>
       </div>
     </div>
+    <div *ngIf="examQa" class="card-footer text-center">
+      <button class="btn btn-dark float-left" (click)="prev()" style="display: inline; margin-right: 4rem;" [disabled]="!prevEnabled">Prev</button>
+      <button class="btn btn-info" (click)="review()" style="display: inline; margin-right: 4rem;">Review Toggle</button>
+      <button class="btn btn-primary float-right" (click)="next()" [disabled]="!nextEnabled">Next</button>
+    </div>
   </div>
-</div>
-<div *ngIf="examQa" class="card-footer text-center">
-  <button class="btn btn-dark float-left" (click)="prev()" style="display: inline; margin-right: 4rem;">Prev</button>
-  <button class="btn btn-info" (click)="review()" style="display: inline; margin-right: 4rem;">Review Toggle</button>
-  <button class="btn btn-primary float-right" (click)="next()">Next</button>
 </div>
